@@ -19,11 +19,10 @@ import com.android.base.ui.BaseFragment;
  *         vsersion
  */
 public class MineFragment extends BaseFragment {
-    private static final String TAG = MineFragment.class.getSimpleName();
 
     @Override
     public void onAttach(Context context) {
-        debugLifeCycle(TAG);
+        debugLifeCycle();
         super.onAttach(context);
     }
 
@@ -31,7 +30,7 @@ public class MineFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         AppCompatTextView appCompatTextView = new AppCompatTextView(getContext());
-        Log.d(TAG, "onCreateView() called with: " + "MineFragment");
+        Log.d(tag(), "onCreateView() called with: " + "MineFragment");
         appCompatTextView.setText("MineFragment");
 
         return appCompatTextView;

@@ -20,10 +20,9 @@ import com.android.base.ui.BaseFragment;
  */
 public class HomeFragment extends BaseFragment {
 
-    private static final String TAG = HomeFragment.class.getSimpleName();
     @Override
     public void onAttach(Context context) {
-        debugLifeCycle(TAG);
+        debugLifeCycle();
         super.onAttach(context);
     }
 
@@ -31,7 +30,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         AppCompatTextView appCompatTextView = new AppCompatTextView(getContext());
-        Log.d(TAG, "onCreateView() called with: " + "HomeFragment");
+        Log.d(tag(), "onCreateView() called with: " + "HomeFragment");
 
         appCompatTextView.setText("HomeFragment");
         appCompatTextView.setOnClickListener(new View.OnClickListener() {

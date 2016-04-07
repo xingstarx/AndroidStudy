@@ -20,7 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".tabhost.FragmentTabHostActivity"/>
-        <activity android:name=".drawer.DrawerActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".drawer.DrawerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".operation.FragmentOperationActivity">
+        </activity>
     </application>
 
 </manifest>

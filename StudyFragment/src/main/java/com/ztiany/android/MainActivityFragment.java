@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.android.base.utils.android.ResourceUtil;
 import com.ztiany.android.bean.ListItemInfo;
 import com.ztiany.android.drawer.DrawerActivity;
+import com.ztiany.android.operation.FragmentOperationActivity;
 import com.ztiany.android.tabhost.FragmentTabHostActivity;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class MainActivityFragment extends Fragment {
         List<ListItemInfo> infoList = new ArrayList<>();
         infoList.add(new ListItemInfo(FragmentTabHostActivity.class, ResourceUtil.getString(R.string.tab_host)));
         infoList.add(new ListItemInfo(DrawerActivity.class, ResourceUtil.getString(R.string.drawer_layout)));
+        infoList.add(new ListItemInfo(FragmentOperationActivity.class, ResourceUtil.getString(R.string.operation)));
         return infoList;
     }
 

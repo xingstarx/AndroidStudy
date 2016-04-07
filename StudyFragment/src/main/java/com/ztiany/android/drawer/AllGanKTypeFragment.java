@@ -1,5 +1,7 @@
 package com.ztiany.android.drawer;
 
+import com.ztiany.android.BaseViewFragment;
+
 /**
  * author Ztiany                                                                        <br/>
  * email 1169654504@qq.com & ztiany3@gmail.com           <br/>
@@ -7,5 +9,5 @@ package com.ztiany.android.drawer;
  * description                                                                             <br/>
  * vsersion
  */
-public class AllGanKTypeFragment extends BaseDrawerFragment {
+public class AllGanKTypeFragment extends BaseViewFragment {
 }

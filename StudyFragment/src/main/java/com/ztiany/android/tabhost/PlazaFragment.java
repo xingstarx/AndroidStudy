@@ -23,7 +23,7 @@ public class PlazaFragment extends BaseFragment {
 
     @Override
     public void onAttach(Context context) {
-        debugLifeCycle(TAG);
+        debugLifeCycle();
         super.onAttach(context);
     }
 

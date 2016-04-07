@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ztiany.android.operation.FragmentOperationActivity">
+
+    <RadioGroup
+        android:id="@+id/act_opt_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <RadioButton
+            android:id="@+id/act_opt1_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"/>
+
+        <RadioButton
+            android:id="@+id/act_opt2_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"/>
+
+        <RadioButton
+            android:id="@+id/act_opt3_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"/>
+
+        <RadioButton
+            android:id="@+id/act_opt4_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"/>
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/act_opt_cb"
+        android:text="addToStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="add"
+                android:text="add"/>
+
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="replace"
+                android:text="replace"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="remove"
+                android:text="remove"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="attach"
+                android:text="attach"/>
+
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="detach"
+                android:text="detach"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="show"
+                android:text="show"/>
+
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="hide"
+                android:text="hide"/>
+
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="printInfo"
+                android:text="printInfo"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="clear"
+                android:text="clear"/>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <FrameLayout
+        android:id="@+id/act_operation_container_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

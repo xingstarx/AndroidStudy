@@ -19,16 +19,15 @@ import android.view.ViewGroup;
  */
 public class BaseFragment extends Fragment {
 
-    private String mTag = BaseFragment.class.getSimpleName();
     private boolean printLifeCycle = false;
 
-    protected void debugLifeCycle(String tag) {
-        mTag = tag;
+    protected BaseFragment debugLifeCycle() {
         printLifeCycle = true;
+        return this;
     }
 
-    protected void debugLifeCycle() {
-        printLifeCycle = true;
+    protected String tag() {
+        return this.getClass().getCanonicalName();
     }
 
 
@@ -37,7 +36,7 @@ public class BaseFragment extends Fragment {
         super.onAttach(context);
 
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onAttach");
+            Log.d(tag(), getClass().getSimpleName() + "-->onAttach");
         }
     }
 
@@ -45,7 +44,7 @@ public class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onCreate");
+            Log.d(tag(), getClass().getSimpleName() + "-->onCreate");
         }
     }
 
@@ -53,7 +52,7 @@ public class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onCreateView");
+            Log.d(tag(), getClass().getSimpleName() + "-->onCreateView");
         }
         return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -63,7 +62,7 @@ public class BaseFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onViewCreated");
+            Log.d(tag(), getClass().getSimpleName() + "-->onViewCreated");
         }
     }
 
@@ -71,7 +70,7 @@ public class BaseFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onActivityCreated");
+            Log.d(tag(), getClass().getSimpleName() + "-->onActivityCreated");
         }
     }
 
@@ -79,7 +78,7 @@ public class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onStart");
+            Log.d(tag(), getClass().getSimpleName() + "-->onStart");
         }
     }
 
@@ -87,7 +86,7 @@ public class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onResume");
+            Log.d(tag(), getClass().getSimpleName() + "-->onResume");
         }
 
     }
@@ -96,7 +95,7 @@ public class BaseFragment extends Fragment {
     public void onPause() {
         super.onPause();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onPause");
+            Log.d(tag(), getClass().getSimpleName() + "-->onPause");
         }
     }
 
@@ -104,7 +103,7 @@ public class BaseFragment extends Fragment {
     public void onStop() {
         super.onStop();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onStop");
+            Log.d(tag(), getClass().getSimpleName() + "-->onStop");
         }
     }
 
@@ -112,7 +111,7 @@ public class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onDestroyView");
+            Log.d(tag(), getClass().getSimpleName() + "-->onDestroyView");
         }
     }
 
@@ -120,7 +119,7 @@ public class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onDestroy");
+            Log.d(tag(), getClass().getSimpleName() + "-->onDestroy");
         }
     }
 
@@ -128,7 +127,7 @@ public class BaseFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onDetach");
+            Log.d(tag(), getClass().getSimpleName() + "-->onDetach");
         }
     }
 
@@ -142,7 +141,7 @@ public class BaseFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->setUserVisibleHint ==" + isVisibleToUser);
+            Log.d(tag(), getClass().getSimpleName() + "-->setUserVisibleHint ==" + isVisibleToUser);
         }
     }
 
@@ -155,7 +154,7 @@ public class BaseFragment extends Fragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (printLifeCycle) {
-            Log.d(mTag, getClass().getSimpleName() + "-->onHiddenChanged = " + hidden);
+            Log.d(tag(), getClass().getSimpleName() + "-->onHiddenChanged = " + hidden);
         }
     }
 

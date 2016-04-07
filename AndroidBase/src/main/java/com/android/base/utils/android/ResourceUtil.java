@@ -1,6 +1,7 @@
 package com.android.base.utils.android;
 
 import android.app.Activity;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ArrayRes;
@@ -25,6 +26,14 @@ public class ResourceUtil {
             return activity.getResources().getColor(id);
         } else {
             return activity.getResources().getColor(id, activity.getTheme());
+        }
+    }
+
+    public static ColorStateList getColorStateList(int id,Activity activity) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return activity.getResources().getColorStateList(id);
+        } else {
+            return activity.getResources().getColorStateList(id, activity.getTheme());
         }
     }
 

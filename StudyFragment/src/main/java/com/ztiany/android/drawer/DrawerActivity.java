@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.android.base.fragment.FragmentInfo;
 import com.android.base.ui.BaseActivity;
@@ -231,12 +230,9 @@ public class DrawerActivity extends BaseActivity {
             return;
         }
 
-        int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
-        if (backStackEntryCount > 0) {
+
             super.onBackPressed();
-        } else {
-            Toast.makeText(DrawerActivity.this, "tui chu", Toast.LENGTH_SHORT).show();
-        }
+
 
     }
 

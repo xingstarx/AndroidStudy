@@ -84,7 +84,7 @@ public class FragmentTabHostActivity extends AppCompatActivity {
         AppCompatTextView textView = new AppCompatTextView(this);
         textView.setGravity(Gravity.CENTER);
         textView.setText(mTabNames[i]);
-        textView.setTextColor(ResourceUtil.getColor(R.color.tab_color, this));
+        textView.setTextColor(ResourceUtil.getColorStateList(R.color.tab_color,this));
         Drawable drawable = createDrawable(i);
         textView.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
         return textView;
