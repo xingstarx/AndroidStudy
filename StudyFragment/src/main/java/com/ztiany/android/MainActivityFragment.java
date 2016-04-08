@@ -14,6 +14,7 @@ import com.ztiany.android.bean.ListItemInfo;
 import com.ztiany.android.drawer.DrawerActivity;
 import com.ztiany.android.operation.FragmentOperationActivity;
 import com.ztiany.android.tabhost.FragmentTabHostActivity;
+import com.ztiany.android.withviewpager.ViewPagerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class MainActivityFragment extends Fragment {
         infoList.add(new ListItemInfo(FragmentTabHostActivity.class, ResourceUtil.getString(R.string.tab_host)));
         infoList.add(new ListItemInfo(DrawerActivity.class, ResourceUtil.getString(R.string.drawer_layout)));
         infoList.add(new ListItemInfo(FragmentOperationActivity.class, ResourceUtil.getString(R.string.operation)));
+        infoList.add(new ListItemInfo(ViewPagerActivity.class, ResourceUtil.getString(R.string.with_view_pager)));
         return infoList;
     }
 

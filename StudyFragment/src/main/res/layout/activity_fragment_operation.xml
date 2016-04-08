@@ -48,32 +48,69 @@
 
     </RadioGroup>
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:orientation="horizontal"
-      android:layout_height="wrap_content">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-      <CheckBox
-          android:id="@+id/act_opt_to_stack_cb"
-          android:text="addToStack"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
+    <RadioGroup
+        android:id="@+id/act_opt_anim_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-      <CheckBox
-          android:id="@+id/act_opt_anim_cb"
-          android:text="Anim"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/act_opt_anim_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Anim"/>
+
+        <RadioButton
+            android:id="@+id/act_opt_anim_and_pop_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AnimStack"/>
+
+        <RadioButton
+            android:id="@+id/act_opt_anim_self_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AnimCreate"/>
+
+        <RadioButton
+            android:id="@+id/act_opt_anim_system_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AnimSystemTrans"/>
+
+        <RadioButton
+            android:id="@+id/act_opt_anim_no_rbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="noAnim"/>
 
 
-      <CheckBox
-          android:id="@+id/act_opt_all_anim_cb"
-          android:text="AnimAndPop"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
+    </RadioGroup>
+</HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/act_opt_to_stack_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="addToStack"/>
 
 
-  </LinearLayout>
+    </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -132,6 +169,17 @@
                 style="@style/CommonBtn"
                 android:onClick="popStack"
                 android:text="popStack"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="popCurrentAddSelected"
+                android:text="popCurrentAddSelected"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="popAllAddSelected"
+                android:text="popAllAddSelected"/>
+
 
             <Button
                 style="@style/CommonBtn"

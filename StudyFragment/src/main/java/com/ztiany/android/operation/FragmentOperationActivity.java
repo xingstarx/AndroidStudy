@@ -19,6 +19,8 @@ import com.ztiany.android.R;
 import java.lang.reflect.Field;
 import java.util.List;
 
+import static com.ztiany.android.R.id.act_opt_anim_rg;
+
 public class FragmentOperationActivity extends BaseActivity {
 
     private static final String TAG = FragmentOperationActivity.class.getSimpleName();
@@ -30,8 +32,10 @@ public class FragmentOperationActivity extends BaseActivity {
 
 
     private boolean mAddToStack;
+
     private boolean mUseAnim;
-    private boolean mUseAllAnim;
+    private boolean mUseAndPopAnim;
+    private boolean mUseCreateAnim;
 
     private Fragment mCurrentFragment;
 
@@ -66,8 +70,7 @@ public class FragmentOperationActivity extends BaseActivity {
         }
 
         CheckBox checkBox = findView(R.id.act_opt_to_stack_cb);
-        CheckBox checkBoxAnim = findView(R.id.act_opt_anim_cb);
-        CheckBox checkBoxAllAnim = findView(R.id.act_opt_all_anim_cb);
+
         RadioGroup radioGroup = findView(R.id.act_opt_rg);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -91,30 +94,28 @@ public class FragmentOperationActivity extends BaseActivity {
 
         });
 
-        checkBoxAnim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        RadioGroup animRg = findView(act_opt_anim_rg);
+        animRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mUseAnim = isChecked;
-                if (mUseAnim) {
-                    mUseAllAnim = false;
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                mUseAnim = false;
+                mUseAndPopAnim = false;
+                mUseCreateAnim = false;
+                if (checkedId == R.id.act_opt_anim_rbtn) {
+                    mUseAnim = true;
+                } else if (checkedId == R.id.act_opt_anim_and_pop_rbtn) {
+                    mUseAndPopAnim = true;
+                } else if (checkedId == R.id.act_opt_anim_self_rbtn) {
+                    mUseCreateAnim = true;
+                    setAnim(true);
+                } else if (checkedId == R.id.act_opt_anim_system_rbtn) {
+                    mUseCreateAnim = true;
+                    setAnim(false);
+                } else if (checkedId == R.id.act_opt_anim_no_rbtn) {
+                    setAnim(false);
                 }
-                Log.d(TAG, "mUseAnim:" + mUseAnim);
-                Log.d(TAG, "mUseAllAnim:" + mUseAllAnim);
             }
         });
-
-        checkBoxAllAnim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mUseAllAnim = isChecked;
-                if (mUseAllAnim) {
-                    mUseAnim = false;
-                }
-                Log.d(TAG, "mUseAnim:" + mUseAnim);
-                Log.d(TAG, "mUseAllAnim:" + mUseAllAnim);
-            }
-        });
-
 
         String classPath = "android.support.v4.app.FragmentManagerImpl";
         try {
@@ -142,19 +143,19 @@ public class FragmentOperationActivity extends BaseActivity {
     public void add(View view) {
         FragmentTransaction add = mFragmentManager.beginTransaction();
 
-        if (mUseAllAnim) {
+        if (mUseAndPopAnim) {
             add.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_bottom_in, R.anim.anim_bottom_out);
         }
         if (mUseAnim) {
             add.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
         }
-
+        if (mUseCreateAnim) {
+            add.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        }
         add.add(mLayoutId, mCurrentFragment, mCurrentFragment.getClass().getName());
         if (mAddToStack) {
             add.addToBackStack(mCurrentFragment.getClass().getName());
         }
-
-
         add.commit();
     }
 
@@ -186,6 +187,7 @@ public class FragmentOperationActivity extends BaseActivity {
 
 
     public void hide(View view) {
+
         mFragmentManager.beginTransaction()
                 .hide(mCurrentFragment)
                 .commit();
@@ -196,13 +198,18 @@ public class FragmentOperationActivity extends BaseActivity {
         FragmentTransaction replace = mFragmentManager.beginTransaction();
 
 
-        if (mUseAllAnim) {
+        if (mUseAndPopAnim) {
             replace.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_bottom_in, R.anim.anim_bottom_out);
 
         }
         if (mUseAnim) {
             replace.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
         }
+        if (mUseCreateAnim) {
+            replace.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        }
+
+
         replace.replace(mLayoutId, mCurrentFragment, mCurrentFragment.getClass().getName());
         if (mAddToStack) {
             replace.addToBackStack(mCurrentFragment.getClass().getName());
@@ -228,8 +235,48 @@ public class FragmentOperationActivity extends BaseActivity {
                     }
                 })
                 .show();
+    }
 
 
+    public void popCurrentAddSelected(View view) {
+        mFragmentManager.popBackStack();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        if (mAddToStack) {
+            fragmentTransaction.addToBackStack(mCurrentFragment.getClass().getName());
+        }
+        if (mUseAndPopAnim) {
+            fragmentTransaction.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_bottom_in, R.anim.anim_bottom_out);
+
+        }
+        if (mUseAnim) {
+            fragmentTransaction.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
+        }
+        if (mUseCreateAnim) {
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        }
+        fragmentTransaction.add(mLayoutId, mCurrentFragment, mCurrentFragment.getClass().getName())
+                .commit();
+
+    }
+
+    public void popAllAddSelected(View view) {
+        mFragmentManager.popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        if (mAddToStack) {
+            fragmentTransaction.addToBackStack(mCurrentFragment.getClass().getName());
+        }
+        if (mUseAndPopAnim) {
+            fragmentTransaction.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_bottom_in, R.anim.anim_bottom_out);
+
+        }
+        if (mUseAnim) {
+            fragmentTransaction.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
+        }
+        if (mUseCreateAnim) {
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        }
+        fragmentTransaction.add(mLayoutId, mCurrentFragment, mCurrentFragment.getClass().getName())
+                .commit();
     }
 
 
@@ -239,11 +286,25 @@ public class FragmentOperationActivity extends BaseActivity {
         if (!Checker.isEmpty(fragments)) {
             for (Fragment fragment : fragments) {
                 Log.d(TAG, "fragment->" + fragment);
+                if (fragment != null)
+                    Log.d(TAG, "fragment.getId():" + fragment.getId());
             }
         }
+
+        int backStackEntryCount = mFragmentManager.getBackStackEntryCount();
+        for (int i = 0; i < backStackEntryCount; i++) {
+            FragmentManager.BackStackEntry backStackEntryAt = mFragmentManager.getBackStackEntryAt(i);
+            Log.d(TAG, "backStackEntryAt-id:" + backStackEntryAt.getId());
+        }
+
+
     }
 
     public void clear(View view) {
+        mFragmentManager.getBackStackEntryCount();
+        FragmentManager.BackStackEntry backStackEntryAt = mFragmentManager.getBackStackEntryAt(1);
+
+
         List<Fragment> fragments = mFragmentManager.getFragments();
         if (!Checker.isEmpty(fragments)) {
             for (Fragment fragment : fragments) {
@@ -260,5 +321,12 @@ public class FragmentOperationActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "mFragmentManager.isDestroyed():" + mFragmentManager.isDestroyed());
+    }
+
+    public void setAnim(boolean anim) {
+        mOpt1Fragment.setUserSelfAnim(anim);
+        mOpt2Fragment.setUserSelfAnim(anim);
+        mOpt3Fragment.setUserSelfAnim(anim);
+        mOpt4Fragment.setUserSelfAnim(anim);
     }
 }

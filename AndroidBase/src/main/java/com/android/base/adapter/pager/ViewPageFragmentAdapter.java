@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
 
@@ -24,7 +25,7 @@ public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
         addFragment(viewPageInfo);
     }
 
-    public void addAllTab(ArrayList<ViewPageInfo> mTabs) {
+    public void addAllTab(List<ViewPageInfo> mTabs) {
         for (ViewPageInfo viewPageInfo : mTabs) {
             addFragment(viewPageInfo);
         }
@@ -82,7 +83,7 @@ public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getItemPosition(Object object) {
-        return PagerAdapter.POSITION_NONE;
+        return PagerAdapter.POSITION_UNCHANGED;
     }
 
     @Override

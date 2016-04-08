@@ -17,7 +17,6 @@ import android.view.View;
 public abstract class BaseActivity extends AppCompatActivity {
 
 
-    private static final String TAG = BaseActivity.class.getSimpleName();
     private boolean printLifeCycle = false;
 
 
@@ -32,22 +31,26 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onCreate" + "bundle = " + savedInstanceState);
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onCreate" + "bundle = " + savedInstanceState);
 
+    }
+
+    private String tag() {
+        return this.getClass().getName();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onRestart");
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onRestart");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onStart");
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onStart");
     }
 
 
@@ -55,14 +58,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onResume");
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onPause");
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onPause");
     }
 
 
@@ -70,14 +73,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onStop");
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (printLifeCycle)
-            Log.d(TAG, this.getClass().getSimpleName() + "---->onDestroy");
+            Log.d(tag(), this.getClass().getSimpleName() + "---->onDestroy");
     }
 
 

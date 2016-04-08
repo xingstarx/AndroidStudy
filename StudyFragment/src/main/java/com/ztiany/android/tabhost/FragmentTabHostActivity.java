@@ -48,7 +48,6 @@ public class FragmentTabHostActivity extends AppCompatActivity {
 
         mFragmentTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
-
         TabHost.TabSpec tabHome = mFragmentTabHost.newTabSpec("tabHome");
         tabHome.setIndicator(createTabView(0));
         mFragmentTabHost.addTab(tabHome, HomeFragment.class, null);

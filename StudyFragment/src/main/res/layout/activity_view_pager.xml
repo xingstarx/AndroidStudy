@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ztiany.android.withviewpager.ViewPagerActivity">
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="pagerAdapter"
+                android:text="pagerAdapter"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="addOne1"
+                android:text="AddOne"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="notify1"
+                android:text="notify"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="removeLast1"
+                android:text="RemoveLast"/>
+
+
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="pagerStatusAdapter"
+                android:text="pagerStatusAdapter"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="addOne2"
+                android:text="AddOne"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="removeLast2"
+                android:text="RemoveLast"/>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/act_viewpager_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>
