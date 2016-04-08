@@ -48,11 +48,32 @@
 
     </RadioGroup>
 
-    <CheckBox
-        android:id="@+id/act_opt_cb"
-        android:text="addToStack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="horizontal"
+      android:layout_height="wrap_content">
+
+      <CheckBox
+          android:id="@+id/act_opt_to_stack_cb"
+          android:text="addToStack"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+      <CheckBox
+          android:id="@+id/act_opt_anim_cb"
+          android:text="Anim"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+
+      <CheckBox
+          android:id="@+id/act_opt_all_anim_cb"
+          android:text="AnimAndPop"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+
+  </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -106,6 +127,11 @@
                 style="@style/CommonBtn"
                 android:onClick="printInfo"
                 android:text="printInfo"/>
+
+            <Button
+                style="@style/CommonBtn"
+                android:onClick="popStack"
+                android:text="popStack"/>
 
             <Button
                 style="@style/CommonBtn"

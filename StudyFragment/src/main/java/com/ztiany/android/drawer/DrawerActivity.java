@@ -194,7 +194,7 @@ public class DrawerActivity extends BaseActivity {
 
         Fragment fragment = fragmentManager.findFragmentByTag(page.getTag());
         if (fragment != null) {
-            Log.d(TAG, "fragment " + fragment);
+            /*Log.d(TAG, "fragment " + fragment);
             FragmentManager.BackStackEntry backStackEntryAt = null;
             int backStackEntryCount = fragmentManager.getBackStackEntryCount();
             int index = 0;
@@ -208,11 +208,16 @@ public class DrawerActivity extends BaseActivity {
             Log.d(TAG, "index:" + index);
             for (int i = 0; i < index; i++) {
                 fragmentManager.popBackStackImmediate();
+            }*/
+            if (page.getStackName() == null) {
+                fragmentManager.popBackStackImmediate(0,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }else {
+                fragmentManager.popBackStackImmediate(page.getStackName(),0);
             }
 
         } else {
-            Log.d(TAG, "fragment == null");
 
+            Log.d(TAG, "fragment == null");
             FragmentTransaction transaction = fragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     .replace(R.id.act_main_container_rl, page.newFragment(this), page.getTag());
@@ -231,7 +236,7 @@ public class DrawerActivity extends BaseActivity {
         }
 
 
-            super.onBackPressed();
+        super.onBackPressed();
 
 
     }
