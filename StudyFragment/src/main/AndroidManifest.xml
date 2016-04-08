@@ -25,6 +25,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".operation.FragmentOperationActivity">
         </activity>
+        <activity android:name=".withviewpager.ViewPagerActivity">
+        </activity>
     </application>
 
 </manifest>
