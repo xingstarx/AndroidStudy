@@ -2,7 +2,6 @@ package com.ztiany.android.withviewpager;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.android.base.adapter.pager.ViewPageFragmentAdapter;
 import com.android.base.ui.BaseActivity;
@@ -27,6 +26,19 @@ public class ViewPagerActivity extends BaseActivity {
         initPageInfo();
         setupViews();
     }
+
+
+    private void setupViews() {
+        findViews();
+
+        mViewPager.setAdapter(mViewPageFragmentAdapter);
+        mViewPageFragmentAdapter.notifyDataSetChanged();
+    }
+
+    private void findViews() {
+        mViewPager = findView(R.id.act_viewpager_vp);
+    }
+
 
     private void initPageInfo() {
 
@@ -57,43 +69,9 @@ public class ViewPagerActivity extends BaseActivity {
 
         mViewPageFragmentAdapter.addAllTab(pageInfoList);
 
-    }
-
-    private void setupViews() {
-        findViews();
-    }
-
-    private void findViews() {
-        mViewPager = findView(R.id.act_viewpager_vp);
-    }
-
-
-    public void pagerStatusAdapter(View view) {
-    }
-
-    public void addOne2(View view) {
 
     }
 
-    public void removeLast2(View view) {
-
-    }
-
-    public void pagerAdapter(View view) {
-        mViewPager.setAdapter(mViewPageFragmentAdapter);
-    }
-
-    public void addOne1(View view) {
-        mViewPageFragmentAdapter.addTab("TitleFile", PagerFiveFragment.class.getName(), PagerFiveFragment.class, null);
-    }
-
-    public void removeLast1(View view) {
-        mViewPageFragmentAdapter.remove(mViewPageFragmentAdapter.getCount() - 1);
-    }
-
-    public void notify1(View view) {
-        mViewPageFragmentAdapter.notifyDataSetChanged();
-    }
 
 
 }

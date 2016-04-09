@@ -44,8 +44,8 @@ public class MainListAdapter extends RecyclerAdapter<ListItemInfo, MainViewHolde
 
         ListItemInfo item = getItem(position);
         viewHolder.mTextView.setText(item.getInfoName());
-        viewHolder.mTextView.setTag(item);
-        viewHolder.mTextView.setOnClickListener(mOnItemClickListener);
+        viewHolder.itemView.setTag(item);
+        viewHolder.itemView.setOnClickListener(mOnItemClickListener);
     }
 }
 

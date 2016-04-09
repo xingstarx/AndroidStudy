@@ -83,7 +83,7 @@ public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getItemPosition(Object object) {
-        return PagerAdapter.POSITION_UNCHANGED;
+        return PagerAdapter.POSITION_NONE;
     }
 
     @Override

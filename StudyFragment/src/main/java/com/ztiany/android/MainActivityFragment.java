@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 
 import com.android.base.utils.android.ResourceUtil;
 import com.ztiany.android.bean.ListItemInfo;
+import com.ztiany.android.communication.FragmentRetainInstance;
 import com.ztiany.android.drawer.DrawerActivity;
 import com.ztiany.android.operation.FragmentOperationActivity;
+import com.ztiany.android.share_element.ShareElementDemoActivity;
 import com.ztiany.android.tabhost.FragmentTabHostActivity;
 import com.ztiany.android.withviewpager.ViewPagerActivity;
 
@@ -49,6 +51,8 @@ public class MainActivityFragment extends Fragment {
         infoList.add(new ListItemInfo(DrawerActivity.class, ResourceUtil.getString(R.string.drawer_layout)));
         infoList.add(new ListItemInfo(FragmentOperationActivity.class, ResourceUtil.getString(R.string.operation)));
         infoList.add(new ListItemInfo(ViewPagerActivity.class, ResourceUtil.getString(R.string.with_view_pager)));
+        infoList.add(new ListItemInfo(ShareElementDemoActivity.class, ResourceUtil.getString(R.string.share_element)));
+        infoList.add(new ListItemInfo(FragmentRetainInstance.class, ResourceUtil.getString(R.string.fragment_retain_instance)));
         return infoList;
     }
 

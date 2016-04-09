@@ -1,5 +1,6 @@
 package com.ztiany.android.tabhost;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +21,8 @@ import com.android.base.ui.BaseFragment;
  */
 public class HomeFragment extends BaseFragment {
 
+    private AppCompatTextView mAppCompatTextView;
+
     @Override
     public void onAttach(Context context) {
         debugLifeCycle();
@@ -29,16 +32,31 @@ public class HomeFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        AppCompatTextView appCompatTextView = new AppCompatTextView(getContext());
-        Log.d(tag(), "onCreateView() called with: " + "HomeFragment");
+        if (mAppCompatTextView == null) {
+            mAppCompatTextView = new AppCompatTextView(getContext());
+            Log.d(tag(), "onCreateView() called with: " + "HomeFragment");
 
-        appCompatTextView.setText("HomeFragment");
-        appCompatTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            mAppCompatTextView.setText("HomeFragment");
+            mAppCompatTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
-        return appCompatTextView;
+                }
+            });
+        }
+
+        return mAppCompatTextView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 }

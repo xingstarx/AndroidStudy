@@ -22,7 +22,7 @@ import com.android.base.utils.android.ResourceUtil;
  * description                                                                             <br/>
  * vsersion
  */
-public class BaseViewFragment extends BaseFragment {
+public class    BaseViewFragment extends BaseFragment {
 
     private boolean mUserSelfAnim;
 
@@ -61,7 +61,6 @@ public class BaseViewFragment extends BaseFragment {
         if (!mUserSelfAnim) {
             return null;
         }
-
         if (transit == FragmentTransaction.TRANSIT_FRAGMENT_OPEN) {//表示视图显示到界面的行为
             if (enter) {//进入的动作
                 return AnimationUtils.loadAnimation(getContext(), R.anim.anim_bottom_in);

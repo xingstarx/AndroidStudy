@@ -290,6 +290,7 @@ public class FragmentOperationActivity extends BaseActivity {
                     Log.d(TAG, "fragment.getId():" + fragment.getId());
             }
         }
+        Log.d(TAG, "------------------------------------------------------------------------------");
 
         int backStackEntryCount = mFragmentManager.getBackStackEntryCount();
         for (int i = 0; i < backStackEntryCount; i++) {
@@ -297,6 +298,48 @@ public class FragmentOperationActivity extends BaseActivity {
             Log.d(TAG, "backStackEntryAt-id:" + backStackEntryAt.getId());
         }
 
+        Log.d(TAG, "------------------------------------------------------------------------------");
+
+        Log.d("mOpt1Fragment", "isAdded():" + mOpt1Fragment.isAdded());
+        Log.d("mOpt1Fragment", "isDetached():" + mOpt1Fragment.isDetached());
+        Log.d("mOpt1Fragment", "isHidden():" + mOpt1Fragment.isHidden());
+        Log.d("mOpt1Fragment", "isInLayout():" + mOpt1Fragment.isInLayout());
+        Log.d("mOpt1Fragment", "isMenuVisible():" + mOpt1Fragment.isMenuVisible());
+        Log.d("mOpt1Fragment", "isRemoving():" + mOpt1Fragment.isRemoving());
+        Log.d("mOpt1Fragment", "isVisible():" + mOpt1Fragment.isVisible());
+        Log.d("mOpt1Fragment", "isResumed():" + mOpt1Fragment.isResumed());
+        Log.d(TAG, "------------------------------------------------------------------------------");
+
+        Log.d("mOpt2Fragment", "isAdded():" + mOpt2Fragment.isAdded());
+        Log.d("mOpt2Fragment", "isDetached():" + mOpt2Fragment.isDetached());
+        Log.d("mOpt2Fragment", "isHidden():" + mOpt2Fragment.isHidden());
+        Log.d("mOpt2Fragment", "isInLayout():" + mOpt2Fragment.isInLayout());
+        Log.d("mOpt2Fragment", "isMenuVisible():" + mOpt2Fragment.isMenuVisible());
+        Log.d("mOpt2Fragment", "isRemoving():" + mOpt2Fragment.isRemoving());
+        Log.d("mOpt2Fragment", "isVisible():" + mOpt2Fragment.isVisible());
+        Log.d("mOpt2Fragment", "isResumed():" + mOpt2Fragment.isResumed());
+        Log.d(TAG, "------------------------------------------------------------------------------");
+
+
+        Log.d("mOpt3Fragment", "isAdded():" + mOpt3Fragment.isAdded());
+        Log.d("mOpt3Fragment", "isDetached():" + mOpt3Fragment.isDetached());
+        Log.d("mOpt3Fragment", "isHidden():" + mOpt3Fragment.isHidden());
+        Log.d("mOpt3Fragment", "isInLayout():" + mOpt3Fragment.isInLayout());
+        Log.d("mOpt3Fragment", "isMenuVisible():" + mOpt3Fragment.isMenuVisible());
+        Log.d("mOpt3Fragment", "isRemoving():" + mOpt3Fragment.isRemoving());
+        Log.d("mOpt3Fragment", "isVisible():" + mOpt3Fragment.isVisible());
+        Log.d("mOpt3Fragment", "isResumed():" + mOpt3Fragment.isResumed());
+
+        Log.d(TAG, "------------------------------------------------------------------------------");
+
+        Log.d("mOpt4Fragment", "isAdded():" + mOpt4Fragment.isAdded());
+        Log.d("mOpt4Fragment", "isDetached():" + mOpt4Fragment.isDetached());
+        Log.d("mOpt4Fragment", "isHidden():" + mOpt4Fragment.isHidden());
+        Log.d("mOpt4Fragment", "isInLayout():" + mOpt4Fragment.isInLayout());
+        Log.d("mOpt4Fragment", "isMenuVisible():" + mOpt4Fragment.isMenuVisible());
+        Log.d("mOpt4Fragment", "isRemoving():" + mOpt4Fragment.isRemoving());
+        Log.d("mOpt4Fragment", "isVisible():" + mOpt4Fragment.isVisible());
+        Log.d("mOpt4Fragment", "isResumed():" + mOpt4Fragment.isResumed());
 
     }
 

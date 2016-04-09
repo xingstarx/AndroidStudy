@@ -5,8 +5,10 @@
 
     <string name="tab_host">TabHostDemo</string>
     <string name="drawer_layout">DrawerLayoutDemo</string>
-    <string name="operation">CommonOperationDemo</string>
+    <string name="operation">CommonOperationAndAnimDemo</string>
     <string name="with_view_pager">WithViewPagerDemo</string>
+    <string name="share_element">ShareElementDemo</string>
+    <string name="fragment_retain_instance">FragmentRetainInstance</string>
 
 
     <string name="open_drawer">打开抽屉</string>
