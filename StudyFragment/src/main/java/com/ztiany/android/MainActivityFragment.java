@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.android.base.utils.android.ResourceUtil;
 import com.ztiany.android.bean.ListItemInfo;
+import com.ztiany.android.bottomsheet.BottomSheetActivity;
 import com.ztiany.android.communication.FragmentRetainInstance;
 import com.ztiany.android.drawer.DrawerActivity;
 import com.ztiany.android.operation.FragmentOperationActivity;
@@ -37,6 +38,11 @@ public class MainActivityFragment extends Fragment {
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.frag_main_rv);
@@ -53,6 +59,7 @@ public class MainActivityFragment extends Fragment {
         infoList.add(new ListItemInfo(ViewPagerActivity.class, ResourceUtil.getString(R.string.with_view_pager)));
         infoList.add(new ListItemInfo(ShareElementDemoActivity.class, ResourceUtil.getString(R.string.share_element)));
         infoList.add(new ListItemInfo(FragmentRetainInstance.class, ResourceUtil.getString(R.string.fragment_retain_instance)));
+        infoList.add(new ListItemInfo(BottomSheetActivity.class, ResourceUtil.getString(R.string.bottom_sheet)));
         return infoList;
     }
 

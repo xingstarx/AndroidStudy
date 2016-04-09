@@ -9,6 +9,7 @@
     <string name="with_view_pager">WithViewPagerDemo</string>
     <string name="share_element">ShareElementDemo</string>
     <string name="fragment_retain_instance">FragmentRetainInstance</string>
+    <string name="bottom_sheet">BottomSheet</string>
 
 
     <string name="open_drawer">打开抽屉</string>

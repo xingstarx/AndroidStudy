@@ -30,6 +30,9 @@
         <activity android:name=".share_element.ShareElementDemoActivity">
         </activity>
         <activity android:name=".communication.FragmentRetainInstance"/>
+
+        <activity android:name=".bottomsheet.BottomSheetActivity">
+        </activity>
     </application>
 
 </manifest>
