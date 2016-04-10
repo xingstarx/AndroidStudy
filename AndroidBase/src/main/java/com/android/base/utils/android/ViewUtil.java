@@ -1,6 +1,10 @@
 package com.android.base.utils.android;
 
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
+
+import com.android.base.utils.compat.AppVersion;
 
 /**
  * @author Ztiany
@@ -87,6 +91,21 @@ public class ViewUtil {
             }
         }
     }
+
+    public static void setBackgroundDrawable(View view, Drawable drawable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
+    }
+
+    public static void setElevation(View view, int elevation) {
+        if (AppVersion.afterLollipop()) {
+            view.setElevation(elevation);
+        }
+    }
+
 
 
 }

@@ -1,1 +1,1 @@
-include ':StudyFragment', ':AndroidBase', ':StudyAnimation', ':StudyWebView', ':StudyAndroid4_xFeature'
+include ':StudyFragment', ':AndroidBase', ':StudyAnimation', ':StudyWebView', ':StudyAndroid4_xFeature', ':StudyCustomView', ':StudyRxJava'
