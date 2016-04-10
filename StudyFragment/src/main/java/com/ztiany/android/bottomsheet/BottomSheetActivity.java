@@ -26,4 +26,16 @@ public class BottomSheetActivity extends AppCompatActivity {
                 .show(getSupportFragmentManager(), "BottomSheetDialogFragment");
 
     }
+
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+    }
+
 }

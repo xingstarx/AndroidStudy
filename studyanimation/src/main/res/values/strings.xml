@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">StudyAnimation</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="overlay">overlay</string>
+
+</resources>

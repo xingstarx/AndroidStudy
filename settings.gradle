@@ -1,1 +1,1 @@
-include ':StudyFragment', ':AndroidBase'
+include ':StudyFragment', ':AndroidBase', ':StudyAnimation'
