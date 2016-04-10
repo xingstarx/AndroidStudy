@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/menu_switch"
+        android:title="SwitchButton"/>
+
+    <item
+        android:id="@+id/menu_space"
+        android:title="Space"/>
+
+    <item
+        android:id="@+id/menu_pop_menu"
+        android:title="PopupMenu"/>
+
+    <item
+        android:id="@+id/menu_grid_layout"
+        android:title="GridLayout"/>
+
+    <item
+        android:id="@+id/menu_texture_view"
+        android:title="TextureView"/>
+
+</menu>
