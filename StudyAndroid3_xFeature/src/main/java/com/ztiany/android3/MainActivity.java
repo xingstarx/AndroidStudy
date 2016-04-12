@@ -25,6 +25,5 @@ public class MainActivity extends AppCompatActivity {
 
     private void start(Class<? extends Activity> clazz) {
         startActivity(new Intent(this, clazz));
-
     }
 }

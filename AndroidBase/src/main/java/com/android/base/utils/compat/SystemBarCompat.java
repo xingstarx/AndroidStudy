@@ -67,7 +67,7 @@ public class SystemBarCompat {
 
 
     public static void setTranslucentStatusAfterKitkat(Activity activity, boolean on) {
-        if (!AppVersion.afterKITKAT()) {
+        if (!AppVersion.afterKitkat()) {
             return;
         }
         Window win = activity.getWindow();
@@ -84,7 +84,7 @@ public class SystemBarCompat {
 
 
     public static void setTranslucentNavigationAfterKitkat(Activity activity, boolean on) {
-        if (!AppVersion.afterKITKAT()) {
+        if (!AppVersion.afterKitkat()) {
             return;
         }
         Window win = activity.getWindow();
@@ -109,7 +109,7 @@ public class SystemBarCompat {
 
     @SuppressLint("InlinedApi")
     public static void setTranslucentAfterKitkat(Activity activity, boolean on) {
-        if (!AppVersion.afterKITKAT()) {
+        if (!AppVersion.afterKitkat()) {
             return;
         }
         Window win = activity.getWindow();

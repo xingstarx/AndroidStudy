@@ -22,13 +22,14 @@ public class AppVersion {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
     }
 
-    public static boolean isKITKAT() {
+    public static boolean isKitkat() {
         return Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT;
     }
 
-    public static boolean afterKITKAT() {
+    public static boolean afterKitkat() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     }
+
 
 
     /**
