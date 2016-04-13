@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ztiany.android3.loader.AppListActivity;
 import com.ztiany.android3.loader.LoaderContactActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void loaderContact(View view) {
         start(LoaderContactActivity.class);
+    }
+public void loadAppList(View view) {
+        start(AppListActivity.class);
     }
 
 

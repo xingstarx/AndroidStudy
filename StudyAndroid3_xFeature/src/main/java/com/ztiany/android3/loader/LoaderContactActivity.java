@@ -43,6 +43,7 @@ public class LoaderContactActivity extends AppCompatActivity implements LoaderMa
         getContact();
 
 
+        Log.d(TAG, "getLoaderManager():" + getLoaderManager());
 
 
     }
@@ -149,4 +150,8 @@ public class LoaderContactActivity extends AppCompatActivity implements LoaderMa
         Log.d(TAG, "onLoaderReset() called with: " + "loader = [" + loader + "]");
         mAdapter.swapCursor(null);
     }
+
+
+
+
 }
