@@ -2,6 +2,7 @@ package com.ztiany.android3.loader;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 public class AppListActivity extends AppCompatActivity {
 
@@ -15,5 +16,8 @@ public class AppListActivity extends AppCompatActivity {
                     .replace(android.R.id.content, AppListFragment.newInstance(), AppListFragment.class.getName())
                     .commit();
         }
+
+        Log.d("AppListActivity", "getLoaderManager():" + getLoaderManager());
+        Log.d("AppListActivity", "getSupportLoaderManager():" + getSupportLoaderManager());
     }
 }

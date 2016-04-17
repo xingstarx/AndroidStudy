@@ -58,6 +58,9 @@ public class AppListFragment extends Fragment implements LoaderManager.LoaderCal
         setHasOptionsMenu(true);
         mAppListAdapter = new AppListAdapter(getContext());
 
+
+        Log.d(TAG, "getLoaderManager():" + getLoaderManager());
+
     }
 
     @Nullable
@@ -121,6 +124,18 @@ public class AppListFragment extends Fragment implements LoaderManager.LoaderCal
         }
 
         MenuItemCompat.setActionView(search, view);
+
+
+        MenuItem recreate = menu.add(Menu.NONE, 10, 0, "recreate");
+        recreate.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                getActivity().recreate();
+                return true;
+            }
+        });
+
+
     }
 
     @Override

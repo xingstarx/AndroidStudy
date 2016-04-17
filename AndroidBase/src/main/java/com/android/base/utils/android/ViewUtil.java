@@ -1,8 +1,13 @@
 package com.android.base.utils.android;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Picture;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.view.View;
+import android.webkit.WebView;
 
 import com.android.base.utils.compat.AppVersion;
 
@@ -107,5 +112,21 @@ public class ViewUtil {
     }
 
 
+    public static <V extends View> V find(View view, @IdRes int viewId) {
+        @SuppressWarnings("unchecked")
+        V v = (V) view.findViewById(viewId);
+        return v;
+    }
+
+
+    public static Bitmap captureBitmapFromWebView(WebView webView) {
+        Picture snapShot = webView.capturePicture();
+        Bitmap bmp = Bitmap.createBitmap(snapShot.getWidth(),
+                snapShot.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bmp);
+        snapShot.draw(canvas);
+        return bmp;
+
+    }
 
 }
