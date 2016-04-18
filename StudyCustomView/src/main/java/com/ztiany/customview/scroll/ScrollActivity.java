@@ -1,4 +1,4 @@
-package com.ztiany.customview.basic;
+package com.ztiany.customview.scroll;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,12 +8,15 @@ import android.view.MenuItem;
 
 import com.ztiany.customview.R;
 
-public class BasicActivity extends AppCompatActivity {
+public class ScrollActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_basic);
+        setContentView(R.layout.activity_basic_scroll);
+        if (savedInstanceState == null) {
+            replace(OverScrollFragment.newInstance());
+        }
     }
 
 

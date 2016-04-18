@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ztiany.customview.pager2tab;
+package com.ztiany.customview.third;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

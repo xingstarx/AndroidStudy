@@ -1,4 +1,4 @@
-package com.ztiany.customview.basic.scroller;
+package com.ztiany.customview.scroll.scroller;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
-import android.widget.Scroller;
+import android.widget.OverScroller;
 
 /**
  * author Ztiany                                                                        <br/>
@@ -33,7 +33,7 @@ public class ScrollerView extends FrameLayout {
     private boolean mBackOnUp = false;
 
 
-    private Scroller mScroller;
+    private OverScroller mScroller;
     private VelocityTracker mVelocityTracker;
     private int mScaledMinimumFlingVelocity;
 
@@ -55,7 +55,7 @@ public class ScrollerView extends FrameLayout {
         mScaledTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         mScaledMinimumFlingVelocity = ViewConfiguration.get(getContext()).getScaledMinimumFlingVelocity();
         mVelocityTracker = VelocityTracker.obtain();
-        mScroller = new Scroller(getContext());
+        mScroller = new OverScroller(getContext());
     }
 
 
@@ -163,7 +163,7 @@ public class ScrollerView extends FrameLayout {
                 getScrollY(),
                 0, (int) v,
                 0, 0,
-                -200, 1500);
+                0, 1500 , 0,300);
         invalidate();
     }
 
@@ -184,6 +184,7 @@ public class ScrollerView extends FrameLayout {
         if (mScroller.computeScrollOffset()) {
             int currX = mScroller.getCurrX();
             int currY = mScroller.getCurrY();
+            Log.d(TAG, "currY:" + currY);
             scrollTo(0, currY);
             invalidate();
         }

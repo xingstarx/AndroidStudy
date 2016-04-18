@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.base.utils.android.ResourceUtil;
-import com.ztiany.customview.basic.BasicActivity;
+import com.ztiany.customview.scroll.ScrollActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public class MainActivityFragment extends Fragment {
 
     private void initData() {
         mData = new ArrayList<>();
-        add(R.string.basic, BasicActivity.class);
+        add(R.string.scroll, ScrollActivity.class);
     }
 
     private void add(int overlay, Class<? extends Activity> overlayActivityClass) {
