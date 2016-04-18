@@ -30,6 +30,7 @@ ext {
             androidPrecent    : "com.android.support:percent:${androidLibrariesVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidLibrariesVersion}",
             androidCard: "com.android.support:cardview-v7:${androidLibrariesVersion}",
+            androidRecyclerView: "com.android.support:recyclerview-v7:${androidLibrariesVersion}",
 
     ]
 

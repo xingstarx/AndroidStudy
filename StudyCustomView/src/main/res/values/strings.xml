@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">StudyCustomView</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="basic">基础知识</string>
+
+
 </resources>
