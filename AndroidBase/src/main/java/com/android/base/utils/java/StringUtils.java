@@ -1,4 +1,4 @@
-package com.android.base.utils.android;
+package com.android.base.utils.java;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
