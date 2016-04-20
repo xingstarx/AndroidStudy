@@ -7,7 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".AppContext"
+        android:name="com.ztiany.AppContext"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".scroll.ScrollActivity">
+        </activity>
+        <activity android:name=".canvas.CanvasActivity">
         </activity>
     </application>
 

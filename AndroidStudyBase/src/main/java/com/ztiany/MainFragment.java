@@ -1,7 +1,8 @@
-package com.ztiany.customview;
+package com.ztiany;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,20 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.base.utils.android.ResourceUtil;
-import com.ztiany.customview.scroll.ScrollActivity;
+import com.android.base.utils.android.UnitConverter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainFragment extends Fragment {
 
 
     private RecyclerView mRecyclerView;
-    private List<Pair<String, Class<? extends Activity>>> mData;
+    private MainAdapter mMainAdapter;
+    private int mOffset = UnitConverter.dpToPx(5);
 
     @Nullable
     @Override
@@ -39,19 +39,28 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initData();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
-        mRecyclerView.setAdapter(new MainAdapter(mData));
+        RecyclerView.LayoutManager layoutManager = getLayoutManager();
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                outRect.bottom = mOffset;
+                outRect.top = mOffset;
+                outRect.left = mOffset;
+                outRect.right = mOffset;
+            }
+        });
+        mMainAdapter = new MainAdapter(null);
+        mRecyclerView.setAdapter(mMainAdapter);
     }
 
-    private void initData() {
-        mData = new ArrayList<>();
-        add(R.string.scroll, ScrollActivity.class);
+    protected RecyclerView.LayoutManager getLayoutManager() {
+        return new GridLayoutManager(getContext(), 3);
     }
 
-    private void add(int overlay, Class<? extends Activity> overlayActivityClass) {
-        mData.add(new Pair<String, Class<? extends Activity>>(ResourceUtil.getString(overlay), overlayActivityClass));
+
+    public void setData(List<Pair<String, Class<? extends Activity>>> data) {
+        mMainAdapter.setData(data);
     }
 
 
@@ -94,6 +103,11 @@ public class MainActivityFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mData == null ? 0 : mData.size();
+        }
+
+        public void setData(List<Pair<String, Class<? extends Activity>>> data) {
+            mData = data;
+            notifyDataSetChanged();
         }
     }
 
