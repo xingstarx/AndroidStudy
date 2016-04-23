@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -52,13 +53,16 @@ public class DrawTextView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        mPaint.setTypeface(Typeface.SERIF);
+        mPaint.setTextSize(UnitConverter.spToPx(18));
 
         canvas.drawARGB(0xFF, 0xFF, 0xFF, 0xFF);
         int halfHeight = getMeasuredHeight() / 2;
         canvas.drawLine(0, halfHeight, getMeasuredWidth(), halfHeight, mPaint);
         mPaint.getFontMetrics(mFontMetrics);
-        canvas.drawText(mText, 0, (halfHeight - ((mFontMetrics.ascent + mFontMetrics.descent) / 2)), mPaint);
+        mPaint.setTextSize(UnitConverter.spToPx(10));
 
+        canvas.drawText(mText, 0, (halfHeight - ((mFontMetrics.ascent + mFontMetrics.descent) / 2)), mPaint);
 
         //Direction 表示设置在使用path绘制文本时的位置
         // Path.Direction.CCW表示在path的外围
@@ -67,7 +71,8 @@ public class DrawTextView extends View {
         mPath.addCircle((float) (getMeasuredWidth() / 1.5), getMeasuredHeight() / 2, getMeasuredHeight() / 4, Path.Direction.CCW);
 
 
-        mPaint.setTextSize(20);
+
+
         canvas.drawTextOnPath(mPathText, mPath, 0, 0, mPaint);
     }
 }

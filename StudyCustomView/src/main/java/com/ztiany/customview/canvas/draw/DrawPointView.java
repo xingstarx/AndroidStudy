@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -17,6 +18,8 @@ import com.android.base.utils.android.UnitConverter;
  * Description：
  */
 public class DrawPointView extends View {
+
+    private RectF mOval;
 
     public DrawPointView(Context context) {
         this(context, null);
@@ -40,6 +43,8 @@ public class DrawPointView extends View {
         mPath = new Path();
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(UnitConverter.dpToPx(20));
+        mOval = new RectF();
+
     }
 
     @Override
@@ -49,27 +54,28 @@ public class DrawPointView extends View {
 
         mPaint.setColor(Color.RED);
         mPaint.setStrokeCap(Paint.Cap.BUTT);
-        canvas.drawPoint(getWidth()/3,getHeight()/2,mPaint);
+        canvas.drawPoint(getWidth() / 3, getHeight() / 2, mPaint);
 
         mPaint.setColor(Color.BLUE);
 
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawPoint(getWidth()/4,getHeight()/2,mPaint);
+        canvas.drawPoint(getWidth() / 4, getHeight() / 2, mPaint);
 
         mPaint.setColor(Color.YELLOW);
 
         mPaint.setStrokeCap(Paint.Cap.SQUARE);
-        canvas.drawPoint(getWidth()/5,getHeight()/2,mPaint);
+        canvas.drawPoint(getWidth() / 5, getHeight() / 2, mPaint);
 
         mPaint.setColor(Color.GREEN);
         mPaint.setStrokeWidth(UnitConverter.dpToPx(12));
 
-        mPath.moveTo(getWidth()/2, getHeight()/2);
-        mPath.addArc(  getWidth()/4, getHeight() / 4,  (getWidth()/1.5F),getHeight() / 1.5F, 0, 180);
+        mPath.moveTo(getWidth() / 2, getHeight() / 2);
+        mOval.set(getWidth() / 1.5F, getHeight() / 1.5F, (getWidth() / 1.2F), getHeight() / 1.2F);
+        mPath.addArc(mOval, 0, 180);
 
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPath.close();
-        canvas.drawPath(mPath,mPaint);
+        canvas.drawPath(mPath, mPaint);
 
     }
 }

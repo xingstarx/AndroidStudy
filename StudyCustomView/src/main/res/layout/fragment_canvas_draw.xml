@@ -29,6 +29,15 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
 
+
+        <com.ztiany.customview.canvas.paint.PathEffectView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <com.ztiany.customview.canvas.paint.ColorMatrixView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
     </LinearLayout>
 
 </ScrollView>

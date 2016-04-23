@@ -1,15 +1,19 @@
 package com.ztiany.customview.canvas;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.Menu;
-import android.view.MenuItem;
 
+import com.android.base.utils.android.ResourceUtil;
 import com.ztiany.InjectActivity;
+import com.ztiany.MainAdapter;
+import com.ztiany.MainFragment;
 import com.ztiany.customview.R;
 import com.ztiany.customview.canvas.coordinate.CoordinateFragment;
 import com.ztiany.customview.canvas.dispatch.DispatchFragment;
-import com.ztiany.customview.canvas.draw.CanvasDrawFragment;
+import com.ztiany.customview.canvas.paint.ColorMatrixFilterFragment;
+
+import java.util.Arrays;
 
 /**
  * Author Ztiany                   <br/>
@@ -17,7 +21,8 @@ import com.ztiany.customview.canvas.draw.CanvasDrawFragment;
  * Date 2016-04-20 11:37      <br/>
  * Description：
  */
-public class CanvasActivity extends InjectActivity {
+public class CanvasActivity extends InjectActivity implements MainAdapter.OnItemClickListener {
+
 
     @Override
     protected int layoutId() {
@@ -26,48 +31,53 @@ public class CanvasActivity extends InjectActivity {
 
     @Override
     protected void setupView() {
-
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_canvas, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int itemId = item.getItemId();
-        switch (itemId) {
-            case R.id.menu_coordinate: {
-                replace(CoordinateFragment.newInstance());
-                break;
-            }
-            case R.id.menu_dispatch: {
-                replace(DispatchFragment.newInstance());
-                break;
-            }     case R.id.menu_draw: {
-                replace(CanvasDrawFragment.newInstance());
-                break;
-            }
-        }
-
-        return super.onOptionsItemSelected(item);
-
-    }
-
-    @Override
-    public void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            replace(DispatchFragment.newInstance());
+            MainFragment mainFragment = MainFragment.newInstance();
+            MainAdapter mainAdapter = new MainAdapter(this,
+                    Arrays.asList(ResourceUtil.getStringArray(R.array.canvas_potion_array)));
+            mainAdapter.setItemOnClickListener(this);
+            mainFragment.setAdapter(mainAdapter);
+            replace(mainFragment);
         }
     }
+
 
     private void replace(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.act_canvas_container_fl, fragment, fragment.getClass().getName())
                 .commit();
     }
+
+    @Override
+    public void onClick(int position) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.act_canvas_container_fl, getFragmentPosition(position))
+                .commit();
+    }
+
+    private Fragment getFragmentPosition(int position) {
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment = DispatchFragment.newInstance();
+                break;
+            case 1:
+                fragment = CoordinateFragment.newInstance();
+                break;
+            case 2:
+                fragment = ColorMatrixFilterFragment.newInstance();
+                break;
+
+        }
+        return fragment;
+    }
+
+
 }

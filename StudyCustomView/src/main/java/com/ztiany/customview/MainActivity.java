@@ -1,6 +1,6 @@
 package com.ztiany.customview;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,17 +12,24 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.android.base.utils.android.ResourceUtil;
+import com.ztiany.MainAdapter;
 import com.ztiany.MainFragment;
 import com.ztiany.customview.canvas.CanvasActivity;
 import com.ztiany.customview.scroll.ScrollActivity;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainAdapter.OnItemClickListener {
 
 
-    private List<Pair<String, Class<? extends Activity>>> mMData;
+    private List<Pair<String, Class<?>>> mMData;
+
+    private Class[] mClasses = {
+            ScrollActivity.class,
+            CanvasActivity.class
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResumeFragments();
         MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
         if (mainFragment != null) {
-            mainFragment.setData(getData());
-
+            MainAdapter mainAdapter = new MainAdapter(this,
+                    Arrays.asList(ResourceUtil.getStringArray(R.array.main_potion_array)));
+            mainAdapter.setItemOnClickListener(this);
+            mainFragment.setAdapter(mainAdapter);
         }
     }
 
@@ -74,14 +83,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public List<Pair<String, Class<? extends Activity>>> getData() {
-        mMData = new ArrayList<>();
-        add(R.string.scroll, ScrollActivity.class);
-        add(R.string.canvas, CanvasActivity.class);
-        return mMData;
-    }
 
-    private void add(int strId, Class<? extends Activity> act) {
-        mMData.add(new Pair<String, Class<? extends Activity>>(ResourceUtil.getString(strId), act));
+    @Override
+    public void onClick(int position) {
+        startActivity(new Intent(this, mClasses[position]));
+
     }
 }

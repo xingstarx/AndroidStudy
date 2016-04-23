@@ -3,8 +3,16 @@
     <string name="action_settings">Settings</string>
 
 
-    <string name="scroll">滑动知识</string>
-    <string name="canvas">画布知识</string>
+    <string-array name="main_potion_array">
+        <item>滑动知识</item>
+        <item>画布知识</item>
+    </string-array>
 
+
+    <string-array name="canvas_potion_array">
+        <item>CanvasDispatch</item>
+        <item>Canvas坐标</item>
+        <item>绘制</item>
+    </string-array>
 
 </resources>

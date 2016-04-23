@@ -11,7 +11,7 @@ import java.util.List;
  * Date 2016-03-19 15:20      <br/>
  * Description：
  */
-public abstract class FragmentPager {
+public class FragmentPager {
 
     private List<FragmentInfo> mPages;
 
@@ -27,6 +27,9 @@ public abstract class FragmentPager {
     public FragmentInfo homePage() {
         return mPages.get(0);
     }
+
+
+
 
     public FragmentInfo formPageId(int id) {
         for (FragmentInfo page : mPages) {
