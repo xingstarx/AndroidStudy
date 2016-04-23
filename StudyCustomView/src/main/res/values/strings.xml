@@ -13,6 +13,7 @@
         <item>CanvasDispatch</item>
         <item>Canvas坐标</item>
         <item>绘制</item>
+        <item>temp环形菜单</item>
     </string-array>
 
 </resources>

@@ -266,8 +266,8 @@ public class PhotoUtils {
      * Framework Documents, as well as the _data field for the MediaStore and
      * other file-based ContentProviders.
      *
-     * @param  The context.
-     * @param uri     The Uri to query.
+     * @param The context.
+     * @param uri The Uri to query.
      * @author paulburke
      */
     @SuppressLint("NewApi")

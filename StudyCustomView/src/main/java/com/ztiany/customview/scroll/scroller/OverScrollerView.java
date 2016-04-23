@@ -76,7 +76,7 @@ public class OverScrollerView extends LinearLayout {
 
         switch (actionMasked) {
             case MotionEvent.ACTION_DOWN: {
-                if (mOverScroller.isOverScrolled()) {
+                if (!mOverScroller.isFinished()) {
                     mIsBeginDrag = true;
                     mOverScroller.abortAnimation();
                 } else {

@@ -29,12 +29,19 @@ public class CanvasView extends View {
 
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        Log.d(TAG, "onLayout() called with: " + "changed = [" + changed + "], left = [" + left + "], top = [" + top + "], right = [" + right + "], bottom = [" + bottom + "]");
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
         Log.d(TAG, "canvas.getWidth():" + canvas.getWidth());
         Log.d(TAG, "canvas.getHeight():" + canvas.getHeight());
         Log.d(TAG, "getMeasuredHeight():" + getMeasuredHeight());
         Log.d(TAG, "getMeasuredWidth():" + getMeasuredWidth());
         Log.d(TAG, "canvas.getMaximumBitmapHeight():" + canvas.getMaximumBitmapHeight());
         Log.d(TAG, "canvas.getMaximumBitmapWidth():" + canvas.getMaximumBitmapWidth());
+        super.draw(canvas);
     }
 }
