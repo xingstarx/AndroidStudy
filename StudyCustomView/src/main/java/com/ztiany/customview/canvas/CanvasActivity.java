@@ -12,6 +12,7 @@ import com.ztiany.customview.R;
 import com.ztiany.customview.canvas.coordinate.CoordinateFragment;
 import com.ztiany.customview.canvas.dispatch.DispatchFragment;
 import com.ztiany.customview.canvas.paint.ColorMatrixFilterFragment;
+import com.ztiany.customview.canvas.path.AddPathFragment;
 
 import java.util.Arrays;
 
@@ -73,6 +74,9 @@ public class CanvasActivity extends InjectActivity implements MainAdapter.OnItem
                 break;
             case 2:
                 fragment = ColorMatrixFilterFragment.newInstance();
+                break;
+            case 3:
+                fragment = AddPathFragment.newInstance();
                 break;
         }
         return fragment;

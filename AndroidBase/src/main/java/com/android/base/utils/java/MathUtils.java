@@ -18,7 +18,7 @@ public class MathUtils {
      * @return 弧度
      */
     public static float angleToRadian(float angle) {
-        return (float) (angle * (Math.PI / 180));
+        return (float) Math.toRadians(angle);
     }
 
     /**
@@ -27,6 +27,6 @@ public class MathUtils {
      * @return 角度
      */
     public static float radianToAngle(float radian) {
-        return (float) (radian * (180 / Math.PI));
+        return (float) Math.toDegrees(radian);
     }
 }
