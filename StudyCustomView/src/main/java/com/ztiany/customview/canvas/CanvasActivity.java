@@ -13,6 +13,8 @@ import com.ztiany.customview.canvas.coordinate.CoordinateFragment;
 import com.ztiany.customview.canvas.dispatch.DispatchFragment;
 import com.ztiany.customview.canvas.paint.ColorMatrixFilterFragment;
 import com.ztiany.customview.canvas.path.AddPathFragment;
+import com.ztiany.customview.canvas.path.BezierFragment;
+import com.ztiany.customview.canvas.rect_region.RectWithRegionFragment;
 
 import java.util.Arrays;
 
@@ -77,6 +79,12 @@ public class CanvasActivity extends InjectActivity implements MainAdapter.OnItem
                 break;
             case 3:
                 fragment = AddPathFragment.newInstance();
+                break;
+            case 4:
+                fragment = BezierFragment.newInstance();
+                break;
+            case 5:
+                fragment = RectWithRegionFragment.newInstance();
                 break;
         }
         return fragment;

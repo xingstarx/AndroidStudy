@@ -14,6 +14,8 @@
         <item>Canvas坐标</item>
         <item>绘制</item>
         <item>addPath</item>
+        <item>贝塞尔曲线</item>
+        <item>Rect和Region</item>
     </string-array>
 
 </resources>
