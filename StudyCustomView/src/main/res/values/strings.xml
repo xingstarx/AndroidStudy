@@ -16,6 +16,7 @@
         <item>addPath</item>
         <item>贝塞尔曲线</item>
         <item>Rect和Region</item>
+        <item>着色器</item>
     </string-array>
 
 </resources>

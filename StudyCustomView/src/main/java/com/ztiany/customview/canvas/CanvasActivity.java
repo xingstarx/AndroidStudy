@@ -15,6 +15,7 @@ import com.ztiany.customview.canvas.paint.ColorMatrixFilterFragment;
 import com.ztiany.customview.canvas.path.AddPathFragment;
 import com.ztiany.customview.canvas.path.BezierFragment;
 import com.ztiany.customview.canvas.rect_region.RectWithRegionFragment;
+import com.ztiany.customview.canvas.shader.ShaderFragment;
 
 import java.util.Arrays;
 
@@ -86,6 +87,8 @@ public class CanvasActivity extends InjectActivity implements MainAdapter.OnItem
             case 5:
                 fragment = RectWithRegionFragment.newInstance();
                 break;
+            case 6:
+                fragment = ShaderFragment.newInstance();
         }
         return fragment;
     }
