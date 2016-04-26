@@ -11,37 +11,39 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import java.io.File;
 
 /**
  * [从本地选择图片以及拍照工具类，完美适配2.0-5.0版本]
- *
+ * <p/>
  * author huxinwu
  * version 1.0
  * date 2015-1-7
+ * <p/>
+ * <p/>
+ * 使用方法：
+ * 第一步
+ * photoParams = new PhotoParams();//photoParams每一次使用都需要重新
+ * new  photoUtils = new PhotoUtils(this);
+ * photoUtils.setOnPhotoResultListener(new OnPhotoResultListener() {
  *
- *       <p>
- *          使用方法：
- *          第一步
- *           photoParams = new PhotoParams();//photoParams每一次使用都需要重新
- *          new  photoUtils = new PhotoUtils(this);
- *          photoUtils.setOnPhotoResultListener(new OnPhotoResultListener() {
- *                     @Override public void onPhotoResult(Uri uri) {
- *                              Log.e("onPhotoResult", uri.getPath().toString());
- *                       }
- *                     @Override public void onPhotoCancel() {
- *
- *                        }
- *              });
- *
- *          第二步
- *          @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
- *                      super.onActivityResult(requestCode, resultCode, data);
- *                      photoUtils.onActivityResult(requestCode, resultCode, data);
- *          }
- *  <p/>
+ * @Override public void onPhotoResult(Uri uri) {
+ * Log.e("onPhotoResult", uri.getPath().toString());
+ * }
+ * @Override public void onPhotoCancel() {
+ * <p/>
+ * }
+ * });
+ * <p/>
+ * 第二步
+ * @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
+ * super.onActivityResult(requestCode, resultCode, data);
+ * photoUtils.onActivityResult(requestCode, resultCode, data);
+ * }
+ * <p/>
  **/
 public class PhotoUtils {
 
@@ -70,6 +72,7 @@ public class PhotoUtils {
      **/
     private Activity mActivity;
     private PhotoParams photoParams;
+    private Fragment mFragment;
     private OnPhotoResultListener onPhotoResultListener;
 
     /**
@@ -77,6 +80,10 @@ public class PhotoUtils {
      */
     public PhotoUtils(Activity activity) {
         mActivity = activity;
+    }
+
+    public PhotoUtils(Fragment fragment) {
+        mFragment = fragment;
     }
 
     /**
@@ -95,8 +102,19 @@ public class PhotoUtils {
         clearCropFile(photoParams.outputUri);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE).putExtra(MediaStore.EXTRA_OUTPUT, photoParams.outputUri);
-        mActivity.startActivityForResult(intent, INTENT_TAKE);
+        startForResult(intent, INTENT_TAKE);
+
     }
+
+
+    private void startForResult(Intent intent, int flag) {
+        if (mActivity != null) {
+            mActivity.startActivityForResult(intent, flag);
+        } else if (mFragment != null) {
+            mFragment.startActivityForResult(intent, flag);
+        }
+    }
+
 
     /***
      * 选择一张图片
@@ -118,7 +136,8 @@ public class PhotoUtils {
             Intent intent = new Intent();
             intent.setType(photoParams.type);
             intent.setAction(Intent.ACTION_GET_CONTENT);
-            mActivity.startActivityForResult(intent, KITKAT_LESS);
+            startForResult(intent, KITKAT_LESS);
+
         } else {
             Intent intent = new Intent();
             intent.setType(photoParams.type);
@@ -127,17 +146,16 @@ public class PhotoUtils {
             //如果客户使用的不是4.4以上的版本，因为前面有判断，所以根本不会走else，
             //也就不会出现任何因为这句代码引发的错误
             intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-            mActivity.startActivityForResult(intent, KITKAT_ABOVE);
+            startForResult(intent, KITKAT_ABOVE);
+
         }
     }
 
 
     /***
      * 裁剪图片
-     *
-     * @param activity
      */
-    public void cropPicture(Activity activity) {
+    public void cropPicture() {
         if (photoParams == null) {
             Log.e(tag, "cropPicture param is not null");
         }
@@ -163,11 +181,10 @@ public class PhotoUtils {
             //这个是限制输出图片大小
             innerIntent.putExtra("outputY", photoParams.outputY);
         }
-
         innerIntent.putExtra("return-data", photoParams.returnData);
         innerIntent.putExtra("scale", photoParams.scale);
         innerIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoParams.outputUri);
-        activity.startActivityForResult(innerIntent, INTENT_CROP);
+        startForResult(innerIntent, INTENT_CROP);
     }
 
 
@@ -182,7 +199,7 @@ public class PhotoUtils {
         photoParams.aspectY = -1;
         photoParams.outputX = -1;
         photoParams.outputY = -1;
-        cropPicture(activity);
+        cropPicture();
     }
 
     /**
@@ -202,7 +219,7 @@ public class PhotoUtils {
             //拍照
             case INTENT_TAKE:
                 if (resultCode == Activity.RESULT_OK) {
-                    cropPicture(mActivity);
+                    cropPicture();
                 } else {
                     onPhotoResultListener.onPhotoCancel();
                 }
@@ -212,7 +229,7 @@ public class PhotoUtils {
             case KITKAT_LESS:
                 if (data != null) {
                     photoParams.uri = data.getData();
-                    cropPicture(mActivity);
+                    cropPicture();
                 } else {
                     onPhotoResultListener.onPhotoCancel();
                 }
@@ -222,9 +239,9 @@ public class PhotoUtils {
             case KITKAT_ABOVE:
                 if (data != null) {
                     Uri uri = data.getData();
-                    String thePath = getPath(mActivity, uri);
+                    String thePath = getPath(uri);
                     photoParams.uri = Uri.fromFile(new File(thePath));
-                    cropPicture(mActivity);
+                    cropPicture();
                 } else {
                     onPhotoResultListener.onPhotoCancel();
                 }
@@ -249,12 +266,14 @@ public class PhotoUtils {
      * Framework Documents, as well as the _data field for the MediaStore and
      * other file-based ContentProviders.
      *
-     * @param context The context.
-     * @param uri     The Uri to query.
+     * @param The context.
+     * @param uri The Uri to query.
      * @author paulburke
      */
     @SuppressLint("NewApi")
-    public String getPath(final Context context, final Uri uri) {
+    public String getPath(final Uri uri) {
+        final Context context = mActivity != null ? mActivity : mFragment.getContext();
+
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
         // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
