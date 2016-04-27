@@ -10,7 +10,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.ztiany.customview.R;
@@ -30,6 +29,13 @@ public class BitmapShaderView extends View {
     private Rect mRect;
     private Matrix mMatrix;
     private BitmapShader mShader;
+
+
+    private float[] mMatrixInfo = {
+            1, 0, 0,
+            0, 1, 0,
+            0, 0, 1
+    };
 
     public BitmapShaderView(Context context) {
         this(context, null);
@@ -51,6 +57,8 @@ public class BitmapShaderView extends View {
 //        mPaint.setShader(mShader);
 
         mMatrix = new Matrix();
+        mMatrix.setValues(mMatrixInfo);
+
     }
 
     @Override
@@ -63,14 +71,18 @@ public class BitmapShaderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.translate(getWidth() / 2, getHeight() / 2);
 
-        Log.d(TAG, "mMatrix:" + mMatrix);
+        mMatrix.setRotate(45);
+        mMatrix.preTranslate(mBitmap.getWidth() / 2, mBitmap.getHeight() / 2);
+//        mMatrix.preTranslate(-mBitmap.getWidth() / 2, -mBitmap.getHeight() / 2);
 
-//        mMatrix.postSkew(0.2F, 0.30F);
-        Log.d(TAG, "mMatrix:" + mMatrix);
+        //        mMatrix.postSkew(0.2F, 0.30F);
 
-        mMatrix.setTranslate(-getWidth()/2, getHeight()/2);
-//        mMatrix.postScale(-1 , 1);
+//        mMatrix.setTranslate(-getWidth()/2, getHeight()/2);
+
+        canvas.drawLine(-getWidth() / 2, 0, getWidth() / 2, 0, mPaint);
+        canvas.drawLine(0, -getHeight() / 2, 0, getHeight() / 2, mPaint);
 
 //        mShader.setLocalMatrix(mMatrix);
 //        canvas.drawRect(mRect, mPaint);

@@ -11,6 +11,7 @@ import com.ztiany.MainFragment;
 import com.ztiany.customview.R;
 import com.ztiany.customview.canvas.coordinate.CoordinateFragment;
 import com.ztiany.customview.canvas.dispatch.DispatchFragment;
+import com.ztiany.customview.canvas.matrix.MatrixFragment;
 import com.ztiany.customview.canvas.paint.ColorMatrixFilterFragment;
 import com.ztiany.customview.canvas.path.AddPathFragment;
 import com.ztiany.customview.canvas.path.BezierFragment;
@@ -89,6 +90,9 @@ public class CanvasActivity extends InjectActivity implements MainAdapter.OnItem
                 break;
             case 6:
                 fragment = ShaderFragment.newInstance();
+                break;
+            case 7:
+                fragment = MatrixFragment.newInstance();
         }
         return fragment;
     }
