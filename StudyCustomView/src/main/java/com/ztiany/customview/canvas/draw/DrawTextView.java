@@ -2,10 +2,12 @@ package com.ztiany.customview.canvas.draw;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.android.base.utils.android.UnitConverter;
@@ -44,6 +46,7 @@ public class DrawTextView extends View {
         mPaint.setTextSize(mTextSize);
         mFontMetrics = new Paint.FontMetrics();
         mPath = new Path();
+        mPaint.setColor(Color.WHITE);
     }
 
     private String mText = "Canvas Draw Text yes  画布绘制文字";
@@ -56,11 +59,18 @@ public class DrawTextView extends View {
         mPaint.setTypeface(Typeface.SERIF);
         mPaint.setTextSize(UnitConverter.spToPx(18));
 
-        canvas.drawARGB(0xFF, 0xFF, 0xFF, 0xFF);
+        canvas.drawColor(Color.BLACK);
+
         int halfHeight = getMeasuredHeight() / 2;
         canvas.drawLine(0, halfHeight, getMeasuredWidth(), halfHeight, mPaint);
-        mPaint.getFontMetrics(mFontMetrics);
+
+
         mPaint.setTextSize(UnitConverter.spToPx(10));
+
+
+        mPaint.getFontMetrics(mFontMetrics);
+
+        Log.d("DrawTextView", "mFontMetrics.ascent + mFontMetrics.descent:" + (mFontMetrics.ascent + mFontMetrics.descent));
 
         canvas.drawText(mText, 0, (halfHeight - ((mFontMetrics.ascent + mFontMetrics.descent) / 2)), mPaint);
 

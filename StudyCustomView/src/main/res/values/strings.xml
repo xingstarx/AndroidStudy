@@ -12,12 +12,13 @@
     <string-array name="canvas_potion_array">
         <item>CanvasDispatch</item>
         <item>Canvas坐标</item>
-        <item>绘制</item>
-        <item>addPath</item>
+        <item>颜色矩阵</item>
+        <item>Path</item>
         <item>贝塞尔曲线</item>
         <item>Rect和Region</item>
         <item>着色器</item>
         <item>矩阵</item>
+        <item>Draw</item>
     </string-array>
 
 </resources>

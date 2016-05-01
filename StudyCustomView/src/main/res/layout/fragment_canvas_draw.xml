@@ -11,7 +11,7 @@
 
         <com.ztiany.customview.canvas.draw.DrawTextView
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="200dp"/>
 
         <com.ztiany.customview.canvas.draw.DrawRectView
             android:layout_width="match_parent"
@@ -19,11 +19,11 @@
 
         <com.ztiany.customview.canvas.draw.DrawCircle
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="200dp"/>
 
         <com.ztiany.customview.canvas.draw.DrawOvalView
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="200dp"/>
 
         <com.ztiany.customview.canvas.draw.DrawPointView
             android:layout_width="match_parent"
@@ -34,9 +34,54 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
 
-        <com.ztiany.customview.canvas.paint.ColorMatrixView
+        
+        
+        <com.ztiany.customview.canvas.draw.DrawArcView
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
+
+        <com.ztiany.customview.canvas.draw.DrawBitmapView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        
+        
+        <com.ztiany.customview.canvas.draw.ScaleView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <com.ztiany.customview.canvas.draw.SkewView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
+
+        <com.ztiany.customview.canvas.draw.DashView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
+
+        <com.ztiany.customview.canvas.draw.ClipCanvasView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
+        
+        
+        <com.ztiany.customview.canvas.draw.SaveView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        
+        <com.ztiany.customview.canvas.draw.SaveLayerView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+        <com.ztiany.customview.canvas.draw.BitmapMeshView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.ztiany.customview.canvas.draw.MeshView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.ztiany.customview.canvas.draw.DrawPictureView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"/>
 
     </LinearLayout>
 

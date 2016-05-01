@@ -96,15 +96,15 @@ public class BezierView extends View {
         canvas.drawPoint(mPointF1.x, mPointF1.y, mPointPaint);
 
 
-/*        setPoints();
+       setPoints();
         for (PointF pointF : mPointList) {
             canvas.drawPoint(pointF.x, pointF.y, mPaint);
-        }*/
+        }
 
-        mPath.reset();
+   /*     mPath.reset();
         mPath.moveTo(mPointF0.x,mPointF0.y);
         mPath.quadTo( mLastX, mLastY,mPointF1.x, mPointF1.y);
-        canvas.drawPath(mPath, mPaint);
+        canvas.drawPath(mPath, mPaint);*/
     }
 
     private void setPoints() {
