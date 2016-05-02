@@ -1,4 +1,4 @@
-package com.ztiany.customview.canvas.paint;
+package com.ztiany.customview.canvas.path;
 
 import android.content.Context;
 import android.graphics.Canvas;

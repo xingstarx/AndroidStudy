@@ -14,6 +14,7 @@ import com.ztiany.customview.canvas.dispatch.DispatchFragment;
 import com.ztiany.customview.canvas.draw.DrawingFragment;
 import com.ztiany.customview.canvas.matrix.MatrixFragment;
 import com.ztiany.customview.canvas.paint.ColorMatrixFilterFragment;
+import com.ztiany.customview.canvas.paint.MaskFilterFragment;
 import com.ztiany.customview.canvas.path.AddPathFragment;
 import com.ztiany.customview.canvas.path.BezierFragment;
 import com.ztiany.customview.canvas.rect_region.RectWithRegionFragment;
@@ -97,6 +98,9 @@ public class CanvasActivity extends InjectActivity implements MainAdapter.OnItem
                 break;
             case 8:
                 fragment = DrawingFragment.newInstance();
+                break;
+            case 9:
+                fragment = MaskFilterFragment.newInstance();
                 break;
         }
         return fragment;

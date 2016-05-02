@@ -78,7 +78,9 @@ public class BitmapShaderView extends View {
         mMatrix.postScale(0.7f, 1);
         mMatrix.postTranslate(15, 0);
 
-        Log.d(TAG, "mMatrix:" + mMatrix);
+
+
+
 
         mShader.setLocalMatrix(mMatrix);
 
@@ -86,6 +88,20 @@ public class BitmapShaderView extends View {
 
         canvas.drawLine(-getWidth() / 2, 0, getWidth() / 2, 0, mPaint);
         canvas.drawLine(0, -getHeight() / 2, 0, getHeight() / 2, mPaint);
+
+
+        mMatrix.reset();
+        mMatrix.postTranslate(10, 10);
+        Log.d(TAG, "mMatrix:" + mMatrix);
+        mMatrix.postScale(0.5F,0.5F);
+        Log.d(TAG, "mMatrix:" + mMatrix);
+
+        mMatrix.reset();
+        mMatrix.preScale(0.5F,0.5F);
+        Log.d(TAG, "mMatrix:" + mMatrix);
+        mMatrix.preTranslate(10, 10);
+        Log.d(TAG, "mMatrix:" + mMatrix);
+
 
     }
 }

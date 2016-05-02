@@ -19,6 +19,7 @@
         <item>着色器</item>
         <item>矩阵</item>
         <item>Draw</item>
+        <item>MaskFilter</item>
     </string-array>
 
 </resources>

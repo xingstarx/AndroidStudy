@@ -11,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.ztiany.InjectFragment;
-import com.ztiany.customview.R;
-
 /**
  * author Ztiany                                                                        <br/>
  * email 1169654504@qq.com & ztiany3@gmail.com           <br/>
@@ -21,14 +18,10 @@ import com.ztiany.customview.R;
  * description                                                                             <br/>
  * version
  */
-public class BezierFragment extends InjectFragment {
+public class BezierFragment extends Fragment {
 
     private FrameLayout mFrameLayout;
 
-    @Override
-    protected int layoutId() {
-        return R.layout.fragment_bezier;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
