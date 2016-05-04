@@ -1,10 +1,7 @@
-package com.ztiany.library.base;
+package com.android.base.ui;
 
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
-
-import com.android.base.ui.Presenter;
-import com.android.base.ui.UI;
 
 /**
  * Author Ztiany      <br/>

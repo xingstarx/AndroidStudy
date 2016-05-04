@@ -12,6 +12,18 @@ import android.view.View;
  *         email 1169654504@qq.com & ztiany3@gmail.com
  *         date 2016-03-18 15:22
  *         description
+ *         Activity生命周期执行顺序：
+ *
+ *          onCrate
+ *          onStart
+ *          onRestoreInstanceState（mayBe）
+ *         onPostCreate
+ *         onResume
+ *         onPuase
+ *         onSaveInstanceState
+ *         onStop 在内存不足而导致系统无法保留此进程的情况下，onStop() 可能都不会被执行。
+ *         onDestory
+ *
  *         vsersion
  */
 public abstract class BaseActivity extends AppCompatActivity {
@@ -25,13 +37,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onCreate" + "bundle = " + savedInstanceState);
+        }
 
     }
 
@@ -42,48 +56,52 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onRestart");
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onStart");
+        }
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onResume");
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onPause");
+        }
     }
 
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onStop");
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (printLifeCycle)
+        if (printLifeCycle) {
             Log.d(tag(), this.getClass().getSimpleName() + "---->onDestroy");
+        }
     }
-
-
 
 
     public <T extends View> T findView(@IdRes int viewId) {
