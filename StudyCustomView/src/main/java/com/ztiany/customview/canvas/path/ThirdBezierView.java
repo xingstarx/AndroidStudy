@@ -12,9 +12,6 @@ import android.view.View;
 
 import com.android.base.utils.android.UnitConverter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * author Ztiany                                                                        <br/>
  * email 1169654504@qq.com & ztiany3@gmail.com           <br/>
@@ -22,7 +19,7 @@ import java.util.List;
  * description                                                                             <br/>
  * version
  */
-public class BezierView extends View {
+public class ThirdBezierView extends View {
 
 
     private Paint mPaint;
@@ -30,11 +27,9 @@ public class BezierView extends View {
     private Paint mPointPaint;
 
 
-    private PointF mPointF0, mPointF1;
+    private PointF mPointF0, mPointF1,mPointF2;
     private PointF mCurrentP;
 
-
-    private List<PointF> mPointList;
 
 
     private float mPointWidth;
@@ -43,15 +38,15 @@ public class BezierView extends View {
     private float mLastX, mLastY;
 
 
-    public BezierView(Context context) {
+    public ThirdBezierView(Context context) {
         this(context, null);
     }
 
-    public BezierView(Context context, AttributeSet attrs) {
+    public ThirdBezierView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BezierView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ThirdBezierView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -62,6 +57,7 @@ public class BezierView extends View {
         mPath = new Path();
         mPointF0 = new PointF();
         mPointF1 = new PointF();
+        mPointF2 = new PointF();
         mPointPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPointPaint.setStyle(Paint.Style.FILL);
         mPointPaint.setStrokeWidth(UnitConverter.dpToPx(10));
@@ -69,11 +65,7 @@ public class BezierView extends View {
         mPaint.setColor(Color.RED);
         mPaint.setStrokeWidth(UnitConverter.dpToPx(2));
 
-        mPointList = new ArrayList<>();
 
-        for (float i = 0F; i < 1F; i += 0.01F) {
-            mPointList.add(new PointF());
-        }
     }
 
 
@@ -85,6 +77,9 @@ public class BezierView extends View {
         mPointWidth = min * mPointWidthPercent;
         mPointF0.set(min / 2 - min / 4, centerY);
         mPointF1.set(min / 2 + min / 4, centerY);
+
+        mPointF2.set(min / 2 + min / 4, centerY/2);
+
     }
 
 
@@ -96,30 +91,13 @@ public class BezierView extends View {
         canvas.drawPoint(mPointF1.x, mPointF1.y, mPointPaint);
 
 
-       setPoints();
-        for (PointF pointF : mPointList) {
-            canvas.drawPoint(pointF.x, pointF.y, mPaint);
-        }
-
-
-
-   /*     mPath.reset();
-        mPath.moveTo(mPointF0.x,mPointF0.y);
-        mPath.quadTo( mLastX, mLastY,mPointF1.x, mPointF1.y);
-        canvas.drawPath(mPath, mPaint);*/
-    }
-
-    private void setPoints() {
-        float temp = 0F;
-        float add = 0.01F;
-        float x = 0;
-        float y = 0;
-        for (PointF pointF : mPointList) {
-            x = (1 - temp) * (1 - temp) * mPointF0.x + 2 * temp * (1 - temp) * mLastX + (temp * temp) * mPointF1.x;
-            y = (1 - temp) * (1 - temp) * mPointF0.y + 2 * temp * (1 - temp) * mLastY + (temp * temp) * mPointF1.y;
-            pointF.set(x, y);
-            temp += add;
-        }
+        mPath.reset();
+        mPath.moveTo(mPointF0.x, mPointF0.y);
+        mPath.cubicTo(mLastX, mLastY, mPointF2.x, mPointF2.y,mPointF1.x, mPointF1.y);
+        mPath.lineTo(mPointF2.x, mPointF2.y);
+        mPath.lineTo(mLastX, mLastY);
+        mPath.lineTo(mPointF0.x, mPointF0.y);
+        canvas.drawPath(mPath, mPaint);
     }
 
 
@@ -131,6 +109,10 @@ public class BezierView extends View {
         if (Math.hypot(x - mPointF0.x, y - mPointF0.y) <= mPointWidth) {
             pf = mPointF0;
         }
+        if (Math.hypot(x - mPointF2.x, y - mPointF2.y) <= mPointWidth) {
+            pf = mPointF2;
+        }
+
         return pf;
     }
 
@@ -142,9 +124,11 @@ public class BezierView extends View {
         float y = event.getY();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                mLastX = x;
-                mLastY = y;
                 mCurrentP = getCatchPoint(x, y);
+                if (mCurrentP == null) {
+                    mLastX = x;
+                    mLastY = y;
+                }
                 break;
             }
 

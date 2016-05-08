@@ -55,6 +55,49 @@ public class BezierFragment extends Fragment {
                 return true;
             }
         });
+
+        MenuItem twoBezier = menu.add("二阶贝塞尔曲线");
+        twoBezier.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                mFrameLayout.removeAllViews();
+                mFrameLayout.addView(new TwoBezierView(getContext()));
+                return true;
+            }
+        });
+
+        MenuItem thirdBezier = menu.add("三阶贝塞尔曲线");
+
+        thirdBezier.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                mFrameLayout.removeAllViews();
+                mFrameLayout.addView(new ThirdBezierView(getContext()));
+                return true;
+            }
+        });
+
+        MenuItem circleBezier = menu.add("圆圈贝塞尔曲线");
+
+        circleBezier.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                mFrameLayout.removeAllViews();
+                mFrameLayout.addView(new BezierCircle(getContext()));
+                return true;
+            }
+        });
+
+        MenuItem circleBezierTranslate = menu.add("圆圈贝塞尔曲线Translate");
+
+        circleBezierTranslate.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                mFrameLayout.removeAllViews();
+                mFrameLayout.addView(new BezierCircleTranslate(getContext()));
+                return true;
+            }
+        });
     }
 
     @Nullable

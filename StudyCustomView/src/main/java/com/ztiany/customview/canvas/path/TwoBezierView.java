@@ -22,7 +22,7 @@ import java.util.List;
  * description                                                                             <br/>
  * version
  */
-public class BezierView extends View {
+public class TwoBezierView extends View {
 
 
     private Paint mPaint;
@@ -43,15 +43,15 @@ public class BezierView extends View {
     private float mLastX, mLastY;
 
 
-    public BezierView(Context context) {
+    public TwoBezierView(Context context) {
         this(context, null);
     }
 
-    public BezierView(Context context, AttributeSet attrs) {
+    public TwoBezierView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BezierView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TwoBezierView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -96,30 +96,12 @@ public class BezierView extends View {
         canvas.drawPoint(mPointF1.x, mPointF1.y, mPointPaint);
 
 
-       setPoints();
-        for (PointF pointF : mPointList) {
-            canvas.drawPoint(pointF.x, pointF.y, mPaint);
-        }
-
-
-
-   /*     mPath.reset();
-        mPath.moveTo(mPointF0.x,mPointF0.y);
-        mPath.quadTo( mLastX, mLastY,mPointF1.x, mPointF1.y);
-        canvas.drawPath(mPath, mPaint);*/
-    }
-
-    private void setPoints() {
-        float temp = 0F;
-        float add = 0.01F;
-        float x = 0;
-        float y = 0;
-        for (PointF pointF : mPointList) {
-            x = (1 - temp) * (1 - temp) * mPointF0.x + 2 * temp * (1 - temp) * mLastX + (temp * temp) * mPointF1.x;
-            y = (1 - temp) * (1 - temp) * mPointF0.y + 2 * temp * (1 - temp) * mLastY + (temp * temp) * mPointF1.y;
-            pointF.set(x, y);
-            temp += add;
-        }
+        mPath.reset();
+        mPath.moveTo(mPointF0.x, mPointF0.y);
+        mPath.quadTo(mLastX, mLastY, mPointF1.x, mPointF1.y);
+        mPath.lineTo(mLastX, mLastY);
+        mPath.lineTo(mPointF0.x, mPointF0.y);
+        canvas.drawPath(mPath, mPaint);
     }
 
 
@@ -142,9 +124,11 @@ public class BezierView extends View {
         float y = event.getY();
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                mLastX = x;
-                mLastY = y;
                 mCurrentP = getCatchPoint(x, y);
+                if (mCurrentP == null) {
+                    mLastX = x;
+                    mLastY = y;
+                }
                 break;
             }
 
