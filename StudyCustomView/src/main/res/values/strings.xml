@@ -20,6 +20,7 @@
         <item>矩阵</item>
         <item>Draw</item>
         <item>MaskFilter</item>
+        <item>PathMeasure</item>
     </string-array>
 
 </resources>
