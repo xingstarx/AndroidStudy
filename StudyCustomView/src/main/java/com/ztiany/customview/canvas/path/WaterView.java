@@ -31,7 +31,7 @@ public class WaterView extends View {
 
     private WaterTask mWaterTask;
 
-    public WaterView(Context context){
+    public WaterView(Context context) {
         this(context, null);
 
     }
@@ -43,6 +43,7 @@ public class WaterView extends View {
     public WaterView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+
     }
 
     private void init() {

@@ -39,6 +39,7 @@ public class PathMeasureAnimView extends View {
     private PathMeasure mPathMeasure;
     private ValueAnimator mValueAnimator;
     private float[] mCurrentPoint;
+    private float[] mCurrentTanPoint;
 
 
     public PathMeasureAnimView(Context context) {
@@ -58,6 +59,7 @@ public class PathMeasureAnimView extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPath = new Path();
         mCurrentPoint = new float[2];
+        mCurrentTanPoint = new float[2];
 
         int length = mControlPoints.length;
         for (int i = 0; i < length; i++) {
@@ -152,6 +154,10 @@ public class PathMeasureAnimView extends View {
         mPaint.setStrokeWidth(UnitConverter.dpToPx(20));
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         canvas.drawPoint(mCurrentPoint[0], mCurrentPoint[1], mPaint);
+        mPaint.setColor(Color.GRAY);
+        canvas.drawPoint(mCurrentTanPoint[0], mCurrentTanPoint[1], mPaint);
+
+
 
     }
 
@@ -167,7 +173,7 @@ public class PathMeasureAnimView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float animatedValue = (float) animation.getAnimatedValue();
-                mPathMeasure.getPosTan(animatedValue, mCurrentPoint, null);
+                mPathMeasure.getPosTan(animatedValue, mCurrentPoint, mCurrentTanPoint);
                 invalidate();
             }
         });

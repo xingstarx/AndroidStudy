@@ -42,7 +42,6 @@ public class BitmapMeshView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(mBitmap.getHeight(), MeasureSpec.EXACTLY));
-
     }
 
     private void init() {
