@@ -3,6 +3,7 @@ package com.ztiany.android.tabhost;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
@@ -10,7 +11,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TabHost;
 
-import com.android.base.utils.android.ResourceUtil;
 import com.ztiany.android.R;
 
 
@@ -82,7 +82,7 @@ public class FragmentTabHostActivity extends AppCompatActivity {
         AppCompatTextView textView = new AppCompatTextView(this);
         textView.setGravity(Gravity.CENTER);
         textView.setText(mTabNames[i]);
-        textView.setTextColor(ResourceUtil.getColorStateList(R.color.tab_color,this));
+        textView.setTextColor(ContextCompat.getColorStateList(this,R.color.tab_color));
         Drawable drawable = createDrawable(i);
         textView.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
         return textView;
@@ -90,6 +90,6 @@ public class FragmentTabHostActivity extends AppCompatActivity {
 
     private Drawable createDrawable(int i) {
         int drawableId = mTabSrc[i];
-        return ResourceUtil.getDrawable(drawableId, this);
+        return ContextCompat.getDrawable(this,drawableId );
     }
 }

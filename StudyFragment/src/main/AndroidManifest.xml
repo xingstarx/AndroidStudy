@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.ztiany.android"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="com.ztiany.android"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name=".AppContext"
+        android:name="com.ztiany.android.AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.ztiany.android.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,19 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".tabhost.FragmentTabHostActivity"/>
+        <activity android:name="com.ztiany.android.tabhost.FragmentTabHostActivity"/>
         <activity
-            android:name=".drawer.DrawerActivity"
+            android:name="com.ztiany.android.drawer.DrawerActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".operation.FragmentOperationActivity">
+        <activity android:name="com.ztiany.android.operation.FragmentOperationActivity">
         </activity>
-        <activity android:name=".withviewpager.ViewPagerActivity">
+        <activity android:name="com.ztiany.android.withviewpager.ViewPagerActivity">
         </activity>
-        <activity android:name=".share_element.ShareElementDemoActivity">
+        <activity android:name="com.ztiany.android.share_element.ShareElementDemoActivity">
         </activity>
-        <activity android:name=".communication.FragmentRetainInstance"/>
+        <activity android:name="com.ztiany.android.communication.FragmentRetainInstance"/>
 
-        <activity android:name=".bottomsheet.BottomSheetActivity">
+        <activity android:name="com.ztiany.android.bottomsheet.BottomSheetActivity">
         </activity>
     </application>
 

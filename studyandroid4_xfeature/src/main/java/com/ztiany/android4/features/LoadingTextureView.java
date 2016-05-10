@@ -11,6 +11,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.TextureView;
 
+import com.android.base.utils.view.UnitConverter;
+
 
 /**
  * Author Ztiany                   <br/>

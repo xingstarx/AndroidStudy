@@ -18,8 +18,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.android.base.utils.android.ToastUtil;
 import com.android.base.utils.compat.AppVersion;
+import com.android.base.utils.view.ToastUtil;
 import com.ztiany.android3.R;
 
 public class LoaderContactActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -49,7 +49,7 @@ public class LoaderContactActivity extends AppCompatActivity implements LoaderMa
     }
 
     public void getContact() {
-        if (AppVersion.afterM()) {
+        if (AppVersion.requireInculde(23)) {
             int hasReadContactPermission = checkSelfPermission(Manifest.permission.READ_CONTACTS);
             if (hasReadContactPermission != PackageManager.PERMISSION_GRANTED) {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {

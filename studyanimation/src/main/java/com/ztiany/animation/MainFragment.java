@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.base.utils.android.ResourceUtil;
+import com.android.base.utils.resource.ResourceUtil;
 import com.ztiany.animation.overlay.OverlayActivity;
 
 import java.util.ArrayList;
