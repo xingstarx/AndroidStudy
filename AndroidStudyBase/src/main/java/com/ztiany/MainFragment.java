@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.base.utils.android.UnitConverter;
+import com.android.base.utils.view.UnitConverter;
+
 
 /**
  * A placeholder fragment containing a simple view.

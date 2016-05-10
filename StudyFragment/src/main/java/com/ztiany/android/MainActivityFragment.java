@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.base.utils.android.ResourceUtil;
+import com.android.base.utils.resource.ResourceUtil;
 import com.ztiany.android.bean.ListItemInfo;
 import com.ztiany.android.bottomsheet.BottomSheetActivity;
 import com.ztiany.android.communication.FragmentRetainInstance;

@@ -10,9 +10,11 @@ import android.util.DisplayMetrics;
  * Author Ztiany      <br/>
  * Email ztiany3@gmail.com      <br/>
  * Date 2016-03-19 23:09      <br/>
- * Description：
+ * Description：工具类门面
  */
 public class BaseUtils {
+
+
     private static Context mApplication;
 
     public static void init(Context application) {

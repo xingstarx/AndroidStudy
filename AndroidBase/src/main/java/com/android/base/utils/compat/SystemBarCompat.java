@@ -1,6 +1,6 @@
 package com.android.base.utils.compat;
 
-import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -39,25 +39,32 @@ public class SystemBarCompat {
     private static final String SHOW_NAV_BAR_RES_NAME = "config_showNavigationBar";
 
 
-    public static void setTranslucentStatusForKitkat(Activity activity) {
+    ///////////////////////////////////////////////////////////////////////////
+    //                                                  Kitkat
+    ///////////////////////////////////////////////////////////////////////////
+
+
+    public static void setTranslucentStatusOnKitkat(Activity activity) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatusAfterKitkat(activity, true);
+            setTranslucent(activity, true, false);
+
         }
     }
 
-    public static void setTranslucentNavigationForKitkat(Activity activity) {
+    public static void setTranslucentNavigationOnKitkat(Activity activity) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            setTranslucentNavigationAfterKitkat(activity, true);
+            setTranslucent(activity, false, true);
         }
     }
 
-    public static void setTranslucentForKitkat(Activity activity) {
+    public static void setTranslucentOnKitkat(Activity activity) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            setTranslucentAfterKitkat(activity, true);
+            setTranslucent(activity, true, true);
         }
     }
 
-    public static View setStatusBarColorForKitkat(Activity activity, @ColorInt int color) {
+
+    public static View setStatusBarColorOnKitkat(Activity activity, @ColorInt int color) {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
             ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
             return setupStatusBarView(activity, decorView, color);
@@ -66,67 +73,37 @@ public class SystemBarCompat {
     }
 
 
-    public static void setTranslucentStatusAfterKitkat(Activity activity, boolean on) {
-        if (!AppVersion.afterKitkat()) {
+    ///////////////////////////////////////////////////////////////////////////
+    //                                               After
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static void setTranslucentStatusAfterKitkat(Activity activity) {
+        if (!AppVersion.require(19)) {
             return;
         }
-        Window win = activity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        @SuppressLint("InlinedApi")//已经用AppCompat做了判断
-                int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
+        setTranslucent(activity, true, false);
+    }
+
+    public static void setTranslucentNavigationAfterKitkat(Activity activity) {
+        if (!AppVersion.require(19)) {
+            return;
         }
-        win.setAttributes(winParams);
+        setTranslucent(activity, false, true);
     }
 
 
-    public static void setTranslucentNavigationAfterKitkat(Activity activity, boolean on) {
-        if (!AppVersion.afterKitkat()) {
+    public static void setTranslucentAfterKitkat(Activity activity) {
+        if (!AppVersion.require(19)) {
             return;
         }
-        Window win = activity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        @SuppressLint("InlinedApi")//已经用AppCompat做了判断
-                int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
+        setTranslucent(activity, true, true);
     }
 
 
-    @SuppressLint("InlinedApi")//已经用AppCompat做了判断
     public static void setupStatusBarColorAfterLollipop(Activity activity, @ColorInt int color) {
-        if (AppVersion.afterLollipop()) {
+        if (Build.VERSION.SDK_INT > 20) {
             activity.getWindow().setStatusBarColor(color);
         }
-    }
-
-    @SuppressLint("InlinedApi")
-    public static void setTranslucentAfterKitkat(Activity activity, boolean on) {
-        if (!AppVersion.afterKitkat()) {
-            return;
-        }
-        Window win = activity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
     }
 
 
@@ -139,6 +116,45 @@ public class SystemBarCompat {
         mStatusBarTintView.setLayoutParams(mStatusBarParams);
         rootView.addView(mStatusBarTintView, 0);
         return mStatusBarTintView;
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private static void setTranslucent(Activity activity, boolean status, boolean navigation) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (status) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
+        if (navigation) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
+    public static int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier(STATUS_BAR_HEIGHT_RES_NAME, "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    public static int getNavigationBarHeight(Context context) {
+        int navigationBarHeight = 0;
+        Resources rs = context.getResources();
+        int id = rs.getIdentifier(NAV_BAR_HEIGHT_RES_NAME, "dimen", "android");
+        if (id > 0 && hasNavBar(context)) {
+            navigationBarHeight = rs.getDimensionPixelSize(id);
+        }
+        return navigationBarHeight;
     }
 
 
@@ -157,25 +173,6 @@ public class SystemBarCompat {
         } else { // fallback
             return !ViewConfiguration.get(context).hasPermanentMenuKey();
         }
-    }
-
-    public static int getNavigationBarHeight(Context context) {
-        int navigationBarHeight = 0;
-        Resources rs = context.getResources();
-        int id = rs.getIdentifier(NAV_BAR_HEIGHT_RES_NAME, "dimen", "android");
-        if (id > 0 && hasNavBar(context)) {
-            navigationBarHeight = rs.getDimensionPixelSize(id);
-        }
-        return navigationBarHeight;
-    }
-
-    public static int getStatusBarHeight(Context context) {
-        int result = 0;
-        int resourceId = context.getResources().getIdentifier(STATUS_BAR_HEIGHT_RES_NAME, "dimen", "android");
-        if (resourceId > 0) {
-            result = context.getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
     }
 
 

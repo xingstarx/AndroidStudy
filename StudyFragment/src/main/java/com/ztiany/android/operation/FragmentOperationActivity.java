@@ -12,8 +12,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 
-import com.android.base.ui.BaseActivity;
-import com.android.base.utils.java.Checker;
+import com.android.base.app.AbsActivity;
+import com.android.base.utils.object.Checker;
 import com.ztiany.android.R;
 
 import java.lang.reflect.Field;
@@ -21,7 +21,7 @@ import java.util.List;
 
 import static com.ztiany.android.R.id.act_opt_anim_rg;
 
-public class FragmentOperationActivity extends BaseActivity {
+public class FragmentOperationActivity extends AbsActivity {
 
     private static final String TAG = FragmentOperationActivity.class.getSimpleName();
 

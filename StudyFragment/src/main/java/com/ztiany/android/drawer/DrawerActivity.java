@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,14 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.android.base.app.AbsActivity;
 import com.android.base.fragment.FragmentInfo;
-import com.android.base.ui.BaseActivity;
-import com.android.base.utils.android.ResourceUtil;
 import com.android.base.utils.compat.SystemBarCompat;
 import com.ztiany.android.MainActivity;
 import com.ztiany.android.R;
 
-public class DrawerActivity extends BaseActivity {
+public class DrawerActivity extends AbsActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -71,8 +71,8 @@ public class DrawerActivity extends BaseActivity {
     }
 
     private void setStatusBar() {
-        SystemBarCompat.setTranslucentForKitkat(this);
-        SystemBarCompat.setStatusBarColorForKitkat(this, ResourceUtil.getColor(R.color.colorPrimary, this));
+        SystemBarCompat.setTranslucentOnKitkat(this);
+        SystemBarCompat.setStatusBarColorOnKitkat(this, ContextCompat.getColor(this, R.color.colorPrimary));
 
     }
 
@@ -210,9 +210,9 @@ public class DrawerActivity extends BaseActivity {
                 fragmentManager.popBackStackImmediate();
             }*/
             if (page.getStackName() == null) {
-                fragmentManager.popBackStackImmediate(0,FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            }else {
-                fragmentManager.popBackStackImmediate(page.getStackName(),0);
+                fragmentManager.popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            } else {
+                fragmentManager.popBackStackImmediate(page.getStackName(), 0);
             }
 
         } else {

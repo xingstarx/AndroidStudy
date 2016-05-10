@@ -10,7 +10,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.android.base.utils.android.UnitConverter;
+import com.android.base.utils.view.UnitConverter;
+
 
 /**
  * author Ztiany                                                                        <br/>

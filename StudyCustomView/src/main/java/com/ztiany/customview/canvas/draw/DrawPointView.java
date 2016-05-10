@@ -9,7 +9,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.android.base.utils.android.UnitConverter;
+import com.android.base.utils.view.UnitConverter;
+
 
 /**
  * Author Ztiany                   <br/>

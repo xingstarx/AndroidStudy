@@ -11,7 +11,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.android.base.utils.android.UnitConverter;
+import com.android.base.utils.view.UnitConverter;
+
 
 /**
  * Author Ztiany                   <br/>

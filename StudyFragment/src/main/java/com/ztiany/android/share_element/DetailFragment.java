@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.android.base.ui.BaseFragment;
-import com.android.base.utils.android.ResourceUtil;
+import com.android.base.app.fragment.BaseFragment;
 import com.ztiany.android.R;
 
 /**
@@ -57,7 +57,7 @@ public class DetailFragment extends BaseFragment {
         Bundle arguments = getArguments();
         if (arguments != null) {
             int anInt = arguments.getInt(DRAWABLE_KEY);
-            Drawable drawable = ResourceUtil.getDrawable(anInt, getActivity());
+            Drawable drawable = ContextCompat.getDrawable(getActivity(), anInt);
             if (drawable != null) {
                 mImageView.setImageDrawable(drawable);
             }

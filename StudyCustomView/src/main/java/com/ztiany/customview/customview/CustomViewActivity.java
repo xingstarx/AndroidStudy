@@ -4,17 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.android.base.utils.android.ResourceUtil;
-import com.ztiany.InjectActivity;
+import com.android.base.app.BaseActivity;
+import com.android.base.utils.resource.ResourceUtil;
 import com.ztiany.MainAdapter;
 import com.ztiany.MainFragment;
 import com.ztiany.customview.R;
-import com.ztiany.customview.canvas.dispatch.DispatchFragment;
 import com.ztiany.customview.customview.largeimage.LargeImageFragment;
 
 import java.util.Arrays;
 
-public class CustomViewActivity extends InjectActivity implements MainAdapter.OnItemClickListener {
+public class CustomViewActivity extends BaseActivity implements MainAdapter.OnItemClickListener {
 
 
     @Override
@@ -23,8 +22,11 @@ public class CustomViewActivity extends InjectActivity implements MainAdapter.On
     }
 
     @Override
-    protected void setupView() {
+    protected void setupView(@Nullable Bundle savedInstanceState) {
+
     }
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -14,7 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.base.ui.BaseFragment;
+import com.android.base.app.fragment.BaseFragment;
 import com.ztiany.customview.R;
 
 /**

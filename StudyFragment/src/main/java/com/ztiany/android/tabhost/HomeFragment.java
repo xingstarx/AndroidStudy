@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.base.ui.BaseFragment;
+import com.android.base.app.fragment.BaseFragment;
+
 
 /**
  * @author Ztiany

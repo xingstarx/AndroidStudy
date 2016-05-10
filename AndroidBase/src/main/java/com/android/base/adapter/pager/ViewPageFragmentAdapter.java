@@ -7,36 +7,40 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
 
-    private final Context mContext;
-    private final ArrayList<ViewPageInfo> mTabs = new ArrayList<>();
 
-    public ViewPageFragmentAdapter(FragmentManager fm, Context context) {
+    private AdapterDelegate mAdapterDelegate;
+
+    public ViewPageFragmentAdapter(FragmentManager fm, AdapterDelegate adapterDelegate) {
         super(fm);
-        mContext = context;
+        mAdapterDelegate = adapterDelegate;
+        mAdapterDelegate.setPagerAdapter(this);
     }
+
+
+    public ViewPageFragmentAdapter(FragmentManager fragmentManager, Context context) {
+        super(fragmentManager);
+        mAdapterDelegate = AdapterDelegate.create(context);
+        mAdapterDelegate.setPagerAdapter(this);
+    }
+
+
+
+
 
     public void addTab(String title, String tag, Class<?> clazz, Bundle args) {
-        ViewPageInfo viewPageInfo = new ViewPageInfo(title, tag, clazz, args);
-        addFragment(viewPageInfo);
+        mAdapterDelegate.addTab(title, tag, clazz, args);
     }
 
-    public void addAllTab(List<ViewPageInfo> mTabs) {
-        for (ViewPageInfo viewPageInfo : mTabs) {
-            addFragment(viewPageInfo);
-        }
+    public void addAllTab(List<AdapterDelegate.ViewPageInfo> tabs) {
+        mAdapterDelegate.addAllTab(tabs);
     }
 
-    private void addFragment(ViewPageInfo info) {
-        if (info == null) {
-            return;
-        }
-        mTabs.add(info);
-        notifyDataSetChanged();
+    private void addFragment(AdapterDelegate.ViewPageInfo info) {
+        mAdapterDelegate.addFragment(info);
     }
 
     /**
@@ -52,33 +56,19 @@ public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
      * @param index 备注：如果index小于0，则从第一个开始删 如果大于tab的数量值则从最后一个开始删除
      */
     public void remove(int index) {
-        if (mTabs.isEmpty()) {
-            return;
-        }
-        if (index < 0) {
-            index = 0;
-        }
-        if (index >= mTabs.size()) {
-            index = mTabs.size() - 1;
-        }
-        mTabs.remove(index);
-        notifyDataSetChanged();
+        mAdapterDelegate.remove(index);
     }
 
     /**
      * 移除所有的tab
      */
     public void removeAll() {
-        if (mTabs.isEmpty()) {
-            return;
-        }
-        mTabs.clear();
-        notifyDataSetChanged();
+        mAdapterDelegate.removeAll();
     }
 
     @Override
     public int getCount() {
-        return mTabs.size();
+        return mAdapterDelegate.getCount();
     }
 
     @Override
@@ -88,27 +78,13 @@ public class ViewPageFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        ViewPageInfo info = mTabs.get(position);
-        return Fragment.instantiate(mContext, info.clazz.getName(), info.args);
+        return mAdapterDelegate.getItem(position);
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mTabs.get(position).title;
+        return mAdapterDelegate.getPageTitle(position);
     }
 
 
-    public static class ViewPageInfo {
-        public final String tag;
-        public final Class<?> clazz;
-        public final Bundle args;
-        public final String title;
-
-        public ViewPageInfo(String _title, String _tag, Class<?> _class, Bundle _args) {
-            title = _title;
-            tag = _tag;
-            clazz = _class;
-            args = _args;
-        }
-    }
 }

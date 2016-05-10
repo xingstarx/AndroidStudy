@@ -1,4 +1,4 @@
-package com.ztiany.library.receiver;
+package com.android.base.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

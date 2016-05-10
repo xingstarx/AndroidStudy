@@ -12,7 +12,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import com.android.base.utils.android.UnitConverter;
+import com.android.base.utils.view.UnitConverter;
+
 
 /**
  * Author Ztiany                   <br/>

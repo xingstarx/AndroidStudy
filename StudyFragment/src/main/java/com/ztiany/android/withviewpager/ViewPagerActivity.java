@@ -3,14 +3,15 @@ package com.ztiany.android.withviewpager;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
+import com.android.base.adapter.pager.AdapterDelegate;
 import com.android.base.adapter.pager.ViewPageFragmentAdapter;
-import com.android.base.ui.BaseActivity;
+import com.android.base.app.AbsActivity;
 import com.ztiany.android.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerActivity extends BaseActivity {
+public class ViewPagerActivity extends AbsActivity {
 
 
     private ViewPager mViewPager;
@@ -42,26 +43,26 @@ public class ViewPagerActivity extends BaseActivity {
 
     private void initPageInfo() {
 
-        List<ViewPageFragmentAdapter.ViewPageInfo> pageInfoList = new ArrayList<>();
+        List<AdapterDelegate.ViewPageInfo> pageInfoList = new ArrayList<>();
         pageInfoList.add(
-                new ViewPageFragmentAdapter.ViewPageInfo("TitleOne",
+                new AdapterDelegate.ViewPageInfo("TitleOne",
                         PagerOneFragment.class.getName(),
                         PagerOneFragment.class,
                         null));
         pageInfoList.add(
-                new ViewPageFragmentAdapter.ViewPageInfo("TitleTwo",
+                new AdapterDelegate.ViewPageInfo("TitleTwo",
                         PagerTwoFragment.class.getName(),
                         PagerTwoFragment.class,
                         null));
 
         pageInfoList.add(
-                new ViewPageFragmentAdapter.ViewPageInfo("TitleThird",
+                new AdapterDelegate.ViewPageInfo("TitleThird",
                         PagerThirdFragment.class.getName(),
                         PagerThirdFragment.class,
                         null));
 
         pageInfoList.add(
-                new ViewPageFragmentAdapter.ViewPageInfo("TitleFour",
+                new AdapterDelegate.ViewPageInfo("TitleFour",
                         PagerFourFragment.class.getName(),
                         PagerFourFragment.class,
                         null));

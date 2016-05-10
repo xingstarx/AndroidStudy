@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-import com.android.base.ui.BaseFragment;
-import com.android.base.utils.android.ResourceUtil;
+import com.android.base.app.fragment.BaseFragment;
+
 
 /**
  * author Ztiany                                                                        <br/>
@@ -43,7 +44,7 @@ public class    BaseViewFragment extends BaseFragment {
         if (mTextView == null) {
             mTextView = new TextView(getContext());
             mTextView.setPadding(100, 100, 100, 100);
-            mTextView.setBackgroundColor(ResourceUtil.getColor(R.color.colorAccent, getActivity()));
+            mTextView.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorAccent));
             mTextView.setText(this.getClass().getName());
         }
         Log.d(tag(), "mTextView.getParent():" + mTextView.getParent());

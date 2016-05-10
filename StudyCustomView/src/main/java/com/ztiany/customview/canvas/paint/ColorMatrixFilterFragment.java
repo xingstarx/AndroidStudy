@@ -17,10 +17,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
-import com.android.base.utils.android.ToastUtil;
 import com.android.base.utils.compat.AppVersion;
 import com.android.base.utils.phototaker.PhotoParams;
 import com.android.base.utils.phototaker.PhotoUtils;
+import com.android.base.utils.view.ToastUtil;
 import com.ztiany.InjectFragment;
 import com.ztiany.customview.R;
 
@@ -98,7 +98,7 @@ public class ColorMatrixFilterFragment extends InjectFragment implements SeekBar
     }
 
     private void checkPermission() {
-        if (AppVersion.afterM()) {
+        if (AppVersion.requireInculde(23)) {
             int hasWriteContactsPermission = getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
             if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
@@ -106,7 +106,7 @@ public class ColorMatrixFilterFragment extends InjectFragment implements SeekBar
             }
         }
 
-        if (AppVersion.afterM()) {
+        if (AppVersion.requireInculde(23)) {
             int hasWriteContactsPermission = getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
             if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},

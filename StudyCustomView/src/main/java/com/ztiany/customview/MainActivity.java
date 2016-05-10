@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.android.base.utils.android.ResourceUtil;
+import com.android.base.utils.resource.ResourceUtil;
 import com.ztiany.MainAdapter;
 import com.ztiany.MainFragment;
 import com.ztiany.customview.canvas.CanvasActivity;

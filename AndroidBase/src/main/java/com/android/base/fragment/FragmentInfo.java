@@ -10,7 +10,7 @@ import android.support.v4.app.Fragment;
  * Date 2016-03-19 14:59      <br/>
  * Description：如果需要加入到Stack，建议加上mStackName。
  */
-public class FragmentInfo {
+public class FragmentInfo  {
 
     private int mPagerId;
     private String mTag;
@@ -19,6 +19,16 @@ public class FragmentInfo {
     private Bundle mArguments;
     private boolean mIsToStack;
     private String mStackName;
+
+    private Fragment mFragment;
+
+    public Fragment getInstance() {
+        return mFragment;
+    }
+
+    public void setInstance(Fragment fragment) {
+        mFragment = fragment;
+    }
 
     private FragmentInfo(int pagerId, String tag, Class<? extends Fragment> clazz, int titleId, Bundle arguments, boolean toStack, String stackName) {
         mPagerId = pagerId;
@@ -29,6 +39,7 @@ public class FragmentInfo {
         this.mIsToStack = toStack;
         mStackName = stackName;
     }
+
 
 
     public static PageBuilder builder() {

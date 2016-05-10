@@ -12,6 +12,20 @@ public class JobExecutor {
 
     private static SmartExecutor smartExecutor;
 
+
+    public static void setSchedulePolicy(SchedulePolicy policy) {
+        if (smartExecutor != null) {
+            smartExecutor.setSchedulePolicy(policy);
+        }
+    }
+
+    public static void setOverloadPolicy(OverloadPolicy policy) {
+        if (smartExecutor != null) {
+            smartExecutor.setOverloadPolicy(policy);
+        }
+    }
+
+
     static {
         smartExecutor = new SmartExecutor();
         smartExecutor.setSchedulePolicy(SchedulePolicy.LastInFirstRun);

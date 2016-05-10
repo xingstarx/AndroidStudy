@@ -25,11 +25,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     def androidLibraries = rootProject.ext.androidLibraries
+    def thirdLibraries = rootProject.ext.thirdDependencies
 
-    //noinspection GroovyAssignabilityCheck
     compile androidLibraries.appCompat
-    //noinspection GroovyAssignabilityCheck
     compile androidLibraries.androidRecyclerView
 
-    provided 'org.jetbrains:annotations:13.0'
+
+
+    compile thirdLibraries.butterKnife
 }

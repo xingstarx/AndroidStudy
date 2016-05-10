@@ -14,29 +14,20 @@ public class AppVersion {
 
     }
 
-    public static boolean afterLollipop() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-    }
-
-    public static boolean afterM() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    public static boolean isKitkat() {
-        return Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT;
-    }
-
-    public static boolean afterKitkat() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-    }
-
-
 
     /**
-     * @param level minimum API level version that has to support the device
-     * @return true when the caller API version is at least level
+     * @param level 要求的版本
+     * @return true when the caller API version is > level
      */
     public static boolean require(int level) {
+        return Build.VERSION.SDK_INT > level;
+    }
+
+    /**
+     * @param level 要求的版本
+     * @return true when the caller API version >= level
+     */
+    public static boolean requireInculde(int level) {
         return Build.VERSION.SDK_INT >= level;
     }
 

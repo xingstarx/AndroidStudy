@@ -3,6 +3,7 @@ package com.android.base.fragment;
 import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,6 +30,9 @@ public class FragmentPager {
     }
 
 
+    public int size() {
+        return mPages.size();
+    }
 
 
     public FragmentInfo formPageId(int id) {
@@ -53,6 +57,11 @@ public class FragmentPager {
             }
         }
         return -1;
+    }
+
+
+    public List<FragmentInfo> getPages() {
+        return Collections.unmodifiableList(mPages);
     }
 
 }

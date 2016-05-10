@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.android.base.ui.BaseFragment;
-import com.android.base.utils.android.UnitConverter;
+import com.android.base.app.fragment.BaseFragment;
+import com.android.base.utils.view.UnitConverter;
 import com.ztiany.android.R;
 
 /**

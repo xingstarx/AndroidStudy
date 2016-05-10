@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.android.base.utils.android.ResourceUtil;
-import com.ztiany.InjectActivity;
+import com.android.base.app.BaseActivity;
+import com.android.base.utils.resource.ResourceUtil;
 import com.ztiany.MainAdapter;
 import com.ztiany.MainFragment;
 import com.ztiany.customview.R;
@@ -29,7 +29,7 @@ import java.util.Arrays;
  * Date 2016-04-20 11:37      <br/>
  * Description：
  */
-public class CanvasActivity extends InjectActivity implements MainAdapter.OnItemClickListener {
+public class CanvasActivity extends BaseActivity implements MainAdapter.OnItemClickListener {
 
 
     @Override
@@ -38,8 +38,10 @@ public class CanvasActivity extends InjectActivity implements MainAdapter.OnItem
     }
 
     @Override
-    protected void setupView() {
+    protected void setupView(@Nullable Bundle savedInstanceState) {
+
     }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -3,7 +3,7 @@ package com.ztiany;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.android.base.ui.BaseActivity;
+import com.android.base.app.BaseActivity;
 
 import butterknife.ButterKnife;
 
