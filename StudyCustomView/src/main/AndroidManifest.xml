@@ -2,10 +2,8 @@
 <manifest package="com.ztiany.customview"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
 
     <application
         android:name="com.ztiany.AppContext"
@@ -27,6 +25,8 @@
         <activity android:name=".scroll.ScrollActivity">
         </activity>
         <activity android:name=".canvas.CanvasActivity">
+        </activity>
+        <activity android:name=".customview.CustomViewActivity">
         </activity>
     </application>
 

@@ -14,6 +14,7 @@ import com.android.base.utils.android.ResourceUtil;
 import com.ztiany.MainAdapter;
 import com.ztiany.MainFragment;
 import com.ztiany.customview.canvas.CanvasActivity;
+import com.ztiany.customview.customview.CustomViewActivity;
 import com.ztiany.customview.scroll.ScrollActivity;
 
 import java.util.Arrays;
@@ -21,10 +22,10 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity implements MainAdapter.OnItemClickListener {
 
 
-
     private Class[] mClasses = {
             ScrollActivity.class,
-            CanvasActivity.class
+            CanvasActivity.class,
+            CustomViewActivity.class
     };
 
 

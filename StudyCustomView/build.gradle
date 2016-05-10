@@ -30,5 +30,4 @@ dependencies {
     compile androidLibraries.appCompat
     compile androidLibraries.appDesign
     compile androidLibraries.androidCard
-
 }
